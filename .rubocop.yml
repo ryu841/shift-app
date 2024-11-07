@@ -8,6 +8,7 @@ AllCops:
     - "config/**/*"
     - "bin/*"
     - "node_modules/**/*"
+  SuggestExtensions: false
 
   # 新ルールを有効化
   NewCops: enable
