@@ -5,4 +5,3 @@ class User < ApplicationRecord
   validates :firstname, length: { maximum: 10 }, presence: true
   validates :lastname, length: { maximum: 10 }, presence: true
 end
-
