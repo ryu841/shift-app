@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    firstname { 'テスト' }
+    firstname { '山田' }
     lastname { '太郎' }
     sequence :email do |n|
       "test#{n}@example.com"

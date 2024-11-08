@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:firstname) { 'テスト' }
+  let(:firstname) { '山田' }
   let(:lastname) { '太郎' }
   let(:email) { 'test@example.com' }
   let(:user) { build(:user, firstname: firstname, lastname: lastname, email: email) }

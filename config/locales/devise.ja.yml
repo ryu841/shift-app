@@ -23,8 +23,8 @@ ja:
               confirmation: "が一致していません。"
     attributes:
       user:
-        firstname: "名字"
-        lastname: "名前"
+        firstname: "姓"
+        lastname: "名"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
