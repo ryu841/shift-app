@@ -24,6 +24,9 @@ module ShiftApp
 
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # 日本語用ファイルを使用
+    config.i18n.default_locale = :ja 
+
     config.generators do |g|
       g.assets false # CSS, JavaScriptファイルを自動生成しない
       g.helper false # helperファイルを自動生成しない

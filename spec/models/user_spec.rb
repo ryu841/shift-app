@@ -36,8 +36,8 @@ RSpec.describe User, type: :model do
             user.valid?
 
             expect(user.valid?).to be(false)
-            expect(user.errors[:firstname]).to include('is too long (maximum is 10 characters)')
-            expect(user.errors[:lastname]).to include('is too long (maximum is 10 characters)')
+            expect(user.errors[:firstname]).to include('は10文字以下に設定して下さい。')
+            expect(user.errors[:lastname]).to include('は10文字以下に設定して下さい。')
           end
         end
       end
@@ -49,8 +49,8 @@ RSpec.describe User, type: :model do
 
           it 'Userオブジェクトは無効である' do
             expect(user.valid?).to be(false)
-            expect(user.errors[:firstname]).to include("can't be blank")
-            expect(user.errors[:lastname]).to include("can't be blank")
+            expect(user.errors[:firstname]).to include('が入力されていません。')
+            expect(user.errors[:lastname]).to include('が入力されていません。')
           end
         end
       end
