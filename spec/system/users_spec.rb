@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     driven_by(:rack_test)
   end
@@ -37,7 +37,7 @@ RSpec.describe "Users", type: :system do
         let(:firstname) { '' }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content("姓 が入力されていません。")
+          expect(page).to have_content('姓 が入力されていません。')
         end
       end
 
@@ -53,7 +53,7 @@ RSpec.describe "Users", type: :system do
         let(:lastname) { '' }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content("名 が入力されていません。")
+          expect(page).to have_content('名 が入力されていません。')
         end
       end
 
@@ -69,7 +69,7 @@ RSpec.describe "Users", type: :system do
         let(:email) { '' }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content("メールアドレス が入力されていません。")
+          expect(page).to have_content('メールアドレス が入力されていません。')
         end
       end
 
@@ -77,7 +77,7 @@ RSpec.describe "Users", type: :system do
         let(:password) { '' }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content("パスワード が入力されていません。")
+          expect(page).to have_content('パスワード が入力されていません。')
         end
       end
 
@@ -93,7 +93,7 @@ RSpec.describe "Users", type: :system do
         let(:password_confirmation) { "#{password}hoge" }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content("確認用パスワード が一致していません。")
+          expect(page).to have_content('確認用パスワード が一致していません。')
         end
       end
     end
