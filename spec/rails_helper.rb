@@ -23,4 +23,7 @@ RSpec.configure do |config|
 
   # FactoryBotクラス名省略しても呼び出せるように
   config.include FactoryBot::Syntax::Methods
+
+  # devise のヘルパーメソッドを使えるように
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end
