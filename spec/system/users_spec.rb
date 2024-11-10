@@ -103,7 +103,7 @@ RSpec.describe 'Users', type: :system do
     # 事前にユーザー作成
     before do
       create(:user, firstname: firstname, lastname: lastname, email: email, password: password, password_confirmation: password)
-    
+
       visit '/users/sign_in'
       fill_in 'user_email', with: email
       fill_in 'user_password', with: 'password'

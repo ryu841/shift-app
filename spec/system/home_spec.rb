@@ -38,11 +38,11 @@ RSpec.describe 'Home', type: :system do
       end
 
       it 'ユーザー登録リンクは表示しない' do
-        expect(page).not_to have_link('ユーザー登録', href:'/users/sign_up')
+        expect(page).not_to have_link('ユーザー登録', href: '/users/sign_up')
       end
 
       it 'ログインリンクは表示しない' do
-        expect(page).not_to have_link('ログイン', href:'/users/sign_in')
+        expect(page).not_to have_link('ログイン', href: '/users/sign_in')
       end
 
       it 'ログアウトリンクを表示する' do
