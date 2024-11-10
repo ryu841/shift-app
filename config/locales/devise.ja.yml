@@ -21,6 +21,14 @@ ja:
               invalid: "は有効でありません。"
             password_confirmation:
               confirmation: "が一致していません。"
+        shift:
+          attributes:
+            title_date:
+              blank: "が入力されていません。"
+            comment:
+              too_long: "は%{count}文字以下に設定して下さい。"
+            admin:
+              required: "が入力されていません。"
     attributes:
       user:
         firstname: "姓"
