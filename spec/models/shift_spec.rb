@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Shift, type: :model do
   # before { @admin = create(:admin) }
 
-  let(:title_date) { Date.today }
+  let(:title_date) { Time.zone.today }
   let(:comment) { 'コメント' }
   # let(:admin_id) { @admin.id }
   let(:shift) { Shift.new(title_date: title_date, comment: comment) }
@@ -37,7 +37,7 @@ RSpec.describe Shift, type: :model do
 
   describe 'Shiftが持つ情報の検証' do
     it 'Shiftの属性値を返す' do
-      expect(shift.title_date).to eq(Date.today)
+      expect(shift.title_date).to eq(Time.zone.today)
       expect(shift.comment).to eq('コメント')
       # expect(subject.admin_id).to eq(@admin.id)
     end
