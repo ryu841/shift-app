@@ -29,6 +29,14 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
             admin:
               required: "が入力されていません。"
+        shortfall:
+          attributes:
+            start_time:
+              blank: "が入力されていません。"
+            end_time:
+              blank: "が入力されていません。"
+            require_count:
+              blank: "が入力されていません。"
     attributes:
       user:
         firstname: "姓"
@@ -40,9 +48,14 @@ ja:
         title_date: "シフトの日付"
         comment: "コメント"
         admin: "管理者"
+      shortfall:
+        start_time: "開始時間"
+        end_time: "終了時間"
+        require_count: "募集人数"
     models:
       user: "ユーザー"
       shift: "シフト"
+      shortfall: "募集シフト"
   errors:
     messages:
       not_saved: "エラーが発生したため%{resource}は保存されませんでした。"

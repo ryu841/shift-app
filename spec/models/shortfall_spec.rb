@@ -13,6 +13,35 @@ RSpec.describe Shortfall, type: :model do
         expect(shortfall.valid?).to be(true)
       end
     end
+
+    context '異常系' do
+      context 'start_timeが空の場合' do
+        let(:start_time) { nil }
+
+        it '無効である' do
+          expect(shortfall.valid?).to be(false)
+          expect(shortfall.errors[:start_time]).to include('が入力されていません。')
+        end
+      end
+
+      context 'end_timeが空の場合' do
+        let(:end_time) { nil }
+
+        it '無効である' do
+          expect(shortfall.valid?).to be(false)
+          expect(shortfall.errors[:end_time]).to include('が入力されていません。')
+        end
+      end
+
+      context 'require_countが空の場合' do
+        let(:require_count) { nil }
+
+        it '無効である' do
+          expect(shortfall.valid?).to be(false)
+          expect(shortfall.errors[:require_count]).to include('が入力されていません。')
+        end
+      end
+    end
   end
 
   describe 'Shortfallが持つ情報の検証' do
