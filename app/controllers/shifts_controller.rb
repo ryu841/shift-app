@@ -28,8 +28,8 @@ class ShiftsController < ApplicationController
   def destroy
     @shift = Shift.find_by(id: params[:id])
     # if @shift.user == current_user
-      @shift.destroy
-      flash[:notice] = I18n.t('flash.shifts.destroy.success')
+    @shift.destroy
+    flash[:notice] = I18n.t('flash.shifts.destroy.success')
     # end
     redirect_to shifts_path
   end
