@@ -5,6 +5,7 @@ RSpec.describe 'Users', type: :system do
     driven_by(:rack_test)
     @user = create(:user)
     @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント')
+    @shift2 = create(:shift, title_date: Time.zone.today + 1, comment: 'コメント2')
   end
 
   # 投稿フォーム
@@ -69,6 +70,30 @@ RSpec.describe 'Users', type: :system do
           expect(page).to have_content('店長')
         end
       end
+    end
+  end
+
+  describe '募集シフト一覧機能の検証' do
+    before do
+      sign_in @user
+      visit '/shifts'
+    end
+
+    it '1件目のShiftの詳細が表示される' do
+      expect(page).to have_content(Time.zone.today)
+      expect(page).to have_content('コメント')
+      expect(page).to have_content('店長')
+    end
+
+    it '2件目のShiftの詳細が表示される' do
+      expect(page).to have_content(Time.zone.today + 1)
+      expect(page).to have_content('コメント2')
+      expect(page).to have_content('店長')
+    end
+
+    it '投稿タイトルをクリックすると詳細ページへ遷移する' do
+      click_link Time.zone.today
+      expect(current_path).to eq("/shifts/#{@shift.id}")
     end
   end
 end
