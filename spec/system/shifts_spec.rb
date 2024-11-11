@@ -41,7 +41,7 @@ RSpec.describe 'Users', type: :system do
       context 'パラメータが正常な場合' do
         it 'Postを作成できる' do
           expect { subject }.to change(Shift, :count).by(1)
-          expect(current_path).to eq('/')
+          expect(current_path).to eq('/shifts')
           expect(page).to have_content('シフトが作成されました。')
         end
       end
