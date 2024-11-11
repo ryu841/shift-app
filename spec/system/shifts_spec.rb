@@ -55,7 +55,7 @@ RSpec.describe 'Users', type: :system do
 
         it '入力していた内容は維持される' do
           subject
-          expect(page).to have_field('shift_comment', with: comment )
+          expect(page).to have_field('shift_comment', with: comment)
         end
       end
     end

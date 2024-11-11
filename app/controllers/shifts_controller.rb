@@ -19,7 +19,7 @@ class ShiftsController < ApplicationController
 
   private
 
-    def shift_params
-      params.require(:shift).permit(:title_date, :comment)
-    end
+  def shift_params
+    params.require(:shift).permit(:title_date, :comment)
+  end
 end
