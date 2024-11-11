@@ -7,7 +7,7 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    # @shift.admin_id = current_user.id
+    # @shift.user_id = current_user.id
     if @shift.save
       flash[:notice] = I18n.t('flash.shifts.create.success')
       redirect_to root_path
@@ -15,6 +15,10 @@ class ShiftsController < ApplicationController
       flash[:alert] = I18n.t('flash.shifts.create.failure')
       render :new
     end
+  end
+
+  def show
+    @shift = Shift.find_by(id: params[:id])
   end
 
   private
