@@ -96,4 +96,42 @@ RSpec.describe 'Users', type: :system do
       expect(current_path).to eq("/shifts/#{@shift.id}")
     end
   end
+
+  describe 'シフト削除機能の検証' do
+    context '投稿したユーザーでログインしている場合' do
+      before do
+        sign_in @user
+        visit "/shifts/#{@shift.id}"
+      end
+
+      it '削除ボタンを表示する' do
+        expect(page).to have_button('削除')
+      end
+
+      it '削除ボタンをクリックすると削除できる' do
+        expect do
+          click_button '削除'
+        end.to change(Shift, :count).by(-1)
+
+        expect(current_path).to eq('/shifts')
+        expect(page).to have_content('シフトが削除されました。')
+        expect(page).not_to have_link("/shifts/#{@shift.id}")
+      end
+    end
+
+    context '投稿したユーザーでログインしていない場合' do
+      it '削除ボタンを表示しない' do
+        visit "/shifts/#{@shift.id}"
+        expect(page).not_to have_button('削除')
+      end
+
+      it '直接リクエストを投げても削除されない' do
+        visit "/shifts/#{@shift.id}"
+
+        expect do
+          delete shift_path(@shift)
+        end.not_to change(Shift, :count)
+      end
+    end
+  end
 end
