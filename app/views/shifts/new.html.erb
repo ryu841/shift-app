@@ -1,4 +1,18 @@
-<div>
-  <h1 class="font-bold text-4xl">Shifts#new</h1>
-  <p>Find me in app/views/shifts/new.html.erb</p>
-</div>
+<%= form_with model: @shift, class: "space-y-6 w-3/4 max-w-lg" do |f| %>
+  <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
+  <div class="mt-1">
+    <label class="text-gray-700 text-lg">
+      募集日付
+    </label>
+    <%= f.date_field :title_date, class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+  </div>
+  <div class="mt-1">
+    <label class="text-gray-700 text-lg">
+      コメント
+    </label>
+    <%= f.text_area :comment, rows: "5", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+  </div>
+  <div class="px-4 py-3 text-right sm:px-6">
+    <%= f.submit "作成", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  </div>
+<% end %>
