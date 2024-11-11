@@ -28,6 +28,10 @@ RSpec.describe 'Home', type: :system do
       it 'ログアウトリンクを表示しない' do
         expect(page).not_to have_content('ログアウト')
       end
+
+      it 'シフト作成リンクを表示しない' do
+        expect(page).not_to have_link('シフト作成', href: '/shifts/new')
+      end
     end
 
     context 'ログインしている場合' do
@@ -47,6 +51,10 @@ RSpec.describe 'Home', type: :system do
 
       it 'ログアウトリンクを表示する' do
         expect(page).to have_content('ログアウト')
+      end
+
+      it 'シフト作成リンクを表示する' do
+        expect(page).to have_link('シフト作成', href: '/shifts/new')
       end
 
       it 'ログアウトリンクが機能する' do

@@ -1,10 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe "Shifts", type: :request do
-  describe "GET /new" do
-    it "returns http success" do
-      get "/shifts/new"
-      expect(response).to have_http_status(:success)
+  before { @user = create(:user) }
+
+  describe "GET /shifts/new" do
+    context 'ログインしていない場合' do
+      it "HTTPステータス302を返す" do
+        get "/shifts/new"
+        expect(response).to have_http_status(302)
+      end
+
+      it 'ログインページにリダイレクトされる' do
+        get "/shifts/new"
+        expect(response).to redirect_to '/users/sign_in'
+      end
+    end
+
+    context 'ログインしている場合' do
+      before { sign_in @user }
+
+      it 'HTTPステータス200を返す' do
+        get "/shifts/new"
+        expect(response).to have_http_status(200)
+      end
+
+      it 'ログインページにリダイレクトされない' do
+        get "/shifts/new"
+        expect(response).not_to redirect_to '/users/sign_in'
+      end
     end
   end
 
