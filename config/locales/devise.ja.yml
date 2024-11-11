@@ -36,14 +36,32 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
+      shift:
+        title_date: "シフトの日付"
+        comment: "コメント"
+        admin: "管理者"
     models:
       user: "ユーザー"
+      shift: "シフト"
   errors:
     messages:
       not_saved: "エラーが発生したため%{resource}は保存されませんでした。"
 
+  flash:
+    shifts:
+      create:
+        success: "シフトが作成されました。"
+        failure: "シフトの作成に失敗しました。"
+      update:
+        success: "シフトが更新されました。"
+        failure: "シフトの更新に失敗しました。"
+      destroy:
+        success: "シフトが削除されました。"
+        failure: "シフトの削除に失敗しました。"
+
   devise:
     failure:
+      unauthenticated: "ログインが必要です。"
       invalid: "%{authentication_keys}またはパスワードが違います。"
     registrations:
       user:
