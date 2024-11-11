@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_10_073344) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_114412) do
   create_table "shifts", force: :cascade do |t|
     t.date "title_date", null: false
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shortfalls", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "require_count"
+    t.integer "shift_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_shortfalls_on_shift_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_10_073344) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "shortfalls", "shifts"
 end
