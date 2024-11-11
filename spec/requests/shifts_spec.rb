@@ -50,4 +50,21 @@ RSpec.describe 'Shifts', type: :request do
       end
     end
   end
+
+  describe 'GET /shifts' do
+    context 'ログインしていない場合' do
+      it 'HTTPステータス302を返す' do
+        get '/shifts'
+        expect(response).to have_http_status(302)
+      end
+    end
+
+    context 'ログインしている場合' do
+      it 'HTTPステータス200を返す' do
+        sign_in @user
+        get '/shifts'
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 end
