@@ -1,6 +1,10 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @shifts = Shift.limit(7).order(created_at: :desc)
+  end
+
   def show
     @shift = Shift.find_by(id: params[:id])
   end
