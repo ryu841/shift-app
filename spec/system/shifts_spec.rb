@@ -4,7 +4,7 @@ RSpec.describe 'Users', type: :system do
   before do
     driven_by(:rack_test)
     @user = create(:user)
-    @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント' )
+    @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント')
   end
 
   # 投稿フォーム
@@ -62,9 +62,9 @@ RSpec.describe 'Users', type: :system do
 
       describe 'シフト詳細ページの検証' do
         before { visit "/shifts/#{@shift.id}" }
-    
+
         it 'Shiftの詳細が表示される' do
-          expect(page).to have_content( Time.zone.today )
+          expect(page).to have_content(Time.zone.today)
           expect(page).to have_content('コメント')
           expect(page).to have_content('店長')
         end

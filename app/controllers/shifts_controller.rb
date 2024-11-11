@@ -1,6 +1,10 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @shift = Shift.find_by(id: params[:id])
+  end
+
   def new
     @shift = Shift.new
   end
@@ -15,10 +19,6 @@ class ShiftsController < ApplicationController
       flash[:alert] = I18n.t('flash.shifts.create.failure')
       render :new
     end
-  end
-
-  def show
-    @shift = Shift.find_by(id: params[:id])
   end
 
   private
