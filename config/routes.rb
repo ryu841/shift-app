@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admin, controllers: {
+    registrations: "admin/registrations",
+    sessions: "admin/sessions",
+    passwords: "admin/passwords",
+    confirmations: "admin/confirmations"
+  }
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
