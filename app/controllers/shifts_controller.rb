@@ -39,6 +39,7 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:title_date, :comment, shortfalls_attributes: [:start_time, :end_time, :require_count, :_destroy])
+    params.require(:shift).permit(:title_date, :comment,
+                                  shortfalls_attributes: [:start_time, :end_time, :require_count, :_destroy])
   end
 end
