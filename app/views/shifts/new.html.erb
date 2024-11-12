@@ -1,10 +1,35 @@
-<%= form_with model: @shift, class: "space-y-6 w-3/4 max-w-lg" do |f| %>
+<%= form_with model: @shift, class: "space-y-6 w-3/4 max-w-xl" do |f| %>
   <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
   <div class="mt-1">
     <label class="text-gray-700 text-lg">
       募集日付
     </label>
     <%= f.date_field :title_date, class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+  </div>
+  <div class="mt-1">
+    <label class="text-gray-700 text-lg">
+      募集時間・人数
+    </label>
+    <div id="shortfalls" class="space-y-4" >
+    <%= f.fields_for :shortfalls do |shortfall_fields| %>
+      <div class="p-4 border border-gray-300 rounded-md shadow-sm bg-gray-50" >
+        <div class="flex space-x-4">
+          <div class="w-1/3">
+            <%= shortfall_fields.label :start_time, "開始時間" %>
+            <%= shortfall_fields.select :start_time, options_for_select(render('shared/time_options')), {include_blank: true}, {class: "mt-1 ml-2 w-21 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+          </div>
+          <div class="w-1/3">
+            <%= shortfall_fields.label :end_time, "終了時間" %>
+            <%= shortfall_fields.select :end_time, options_for_select(render('shared/time_options')), {include_blank: true}, {class: "mt-1 ml-2 w-21 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+          </div>
+          <div class="w-1/3">
+            <%= shortfall_fields.label :require_count, "不足人数" %>
+             <%= shortfall_fields.number_field :require_count, min: 1, class: "mt-1 ml-2 w-20 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
   </div>
   <div class="mt-1">
     <label class="text-gray-700 text-lg">

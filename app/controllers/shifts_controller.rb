@@ -7,10 +7,12 @@ class ShiftsController < ApplicationController
 
   def show
     @shift = Shift.find_by(id: params[:id])
+    @shortfalls = @shift.shortfalls
   end
 
   def new
     @shift = Shift.new
+    3.times { @shift.shortfalls.build }
   end
 
   def create
@@ -37,6 +39,6 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:title_date, :comment)
+    params.require(:shift).permit(:title_date, :comment, shortfalls_attributes: [:start_time, :end_time, :require_count, :_destroy])
   end
 end
