@@ -1,2 +1,3 @@
-import "stylesheets/application"
-import "./components/shortfall"
+import "stylesheets/application";
+import "./shortfall";
+

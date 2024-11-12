@@ -12,7 +12,7 @@ class ShiftsController < ApplicationController
 
   def new
     @shift = Shift.new
-    3.times { @shift.shortfalls.build }
+    @shift.shortfalls.build
   end
 
   def create
