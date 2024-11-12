@@ -10,12 +10,18 @@ RSpec.describe 'Users', type: :system do
 
   # 投稿フォーム
   let(:title_date) { Time.zone.today }
+  let(:start_time) { '09:00' }
+  let(:end_time) { '15:00' }
+  let(:require_count) { 2 }
   let(:comment) { 'コメント' }
 
   describe 'シフト作成機能の検証' do
     # シフト投稿を行う一連の動作をまとめる
     subject do
       fill_in 'shift_title_date', with: title_date
+      select start_time, from: 'shift_shortfalls_attributes_0_start_time'
+      select end_time, from: 'shift_shortfalls_attributes_0_end_time'
+      fill_in 'shift_shortfalls_attributes_0_require_count', with: require_count
       fill_in 'shift_comment', with: comment
       click_button '作成'
     end
