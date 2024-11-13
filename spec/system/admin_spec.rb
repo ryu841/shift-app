@@ -5,7 +5,7 @@ RSpec.describe 'Admin', type: :system do
     driven_by(:rack_test)
   end
 
-  # ユーザー情報入力用の変数
+  # 管理者情報入力用の変数
   let(:email) { 'test@example.com' }
   let(:password) { 'password' }
   let(:password_confirmation) { password }
@@ -13,7 +13,7 @@ RSpec.describe 'Admin', type: :system do
   describe 'ユーザー登録機能の検証' do
     before { visit '/admin/sign_up' }
 
-    # ユーザー登録を行う一連の操作をまとめる
+    # 管理者登録を行う一連の操作をまとめる
     subject do
       fill_in 'admin_email', with: email
       fill_in 'admin_password', with: password
@@ -63,36 +63,36 @@ RSpec.describe 'Admin', type: :system do
     end
   end
 
-  # describe 'ログイン機能の検証' do
-  #   # 事前にユーザー作成
-  #   before do
-  #     create(:user, firstname: firstname, lastname: lastname, email: email, password: password, password_confirmation: password)
+  describe 'ログイン機能の検証' do
+    # 事前に管理者作成
+    before do
+      create(:admin, email: email, password: password, password_confirmation: password)
 
-  #     visit '/users/sign_in'
-  #     fill_in 'user_email', with: email
-  #     fill_in 'user_password', with: 'password'
-  #     click_button 'ログイン'
-  #   end
+      visit '/admin/sign_in'
+      fill_in 'admin_email', with: email
+      fill_in 'admin_password', with: 'password'
+      click_button 'ログイン'
+    end
 
-  #   context '正常系' do
-  #     it 'ログインに成功し、トップページにリダイレクトする' do
-  #       expect(current_path).to eq('/')
-  #     end
+    context '正常系' do
+      it 'ログインに成功し、トップページにリダイレクトする' do
+        expect(current_path).to eq('/')
+      end
 
-  #     it 'ログイン成功時のフラッシュメッセージを表示する' do
-  #       expect(page).to have_content('ログインしました。')
-  #     end
-  #   end
+      it 'ログイン成功時のフラッシュメッセージを表示する' do
+        expect(page).to have_content('ログインしました。')
+      end
+    end
 
-  #   context '異常系' do
-  #     let(:password) { 'NGpassword' }
-  #     it 'ログインに失敗し、ページ遷移しない' do
-  #       expect(current_path).to eq('/users/sign_in')
-  #     end
+    context '異常系' do
+      let(:password) { 'NGpassword' }
+      it 'ログインに失敗し、ページ遷移しない' do
+        expect(current_path).to eq('/admin/sign_in')
+      end
 
-  #     it 'ログイン失敗時のフラッシュメッセージを表示する' do
-  #       expect(page).to have_content('メールアドレスまたはパスワードが違います。')
-  #     end
-  #   end
-  # end
+      it 'ログイン失敗時のフラッシュメッセージを表示する' do
+        expect(page).to have_content('メールアドレスまたはパスワードが違います。')
+      end
+    end
+  end
 end
