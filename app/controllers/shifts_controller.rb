@@ -29,7 +29,7 @@ class ShiftsController < ApplicationController
 
   def destroy
     @shift = Shift.find_by(id: params[:id])
-    if @shift.admin_id = current_admin["id"]
+    if @shift.admin_id == current_admin["id"]
       @shift.destroy
       flash[:notice] = I18n.t('flash.shifts.destroy.success')
     else
