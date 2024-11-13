@@ -6,9 +6,9 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   private
 
   def check_if_admin_exists
-    if Admin.count >= 1
-      flash[:alert] = '管理者はすでに作成されています。'
-      redirect_to root_path
-    end
+    return unless Admin.count >= 1
+
+    flash[:alert] = I18n.t('devise.errors.messages.one_admin_only')
+    redirect_to root_path
   end
 end

@@ -70,7 +70,7 @@ RSpec.describe 'Users', type: :system do
       describe 'シフト詳細ページの検証' do
         before do
           subject
-          visit "/shifts/#{@shift.id}" 
+          visit "/shifts/#{@shift.id}"
         end
 
         it 'Shiftの詳細が表示される' do

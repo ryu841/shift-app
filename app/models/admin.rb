@@ -7,10 +7,11 @@ class Admin < ApplicationRecord
   validate :only_one_admin, on: :create
 
   private
-  
+
   def only_one_admin
-    if Admin.count > 0
-      errors.add(:base, '管理者は1人のみ作成できます。')
-    end
+    # 管理者が1人以上いれば処理を中止
+    return unless Admin.count.positive?
+
+    errors.add(:base, :one_admin_only)
   end
 end

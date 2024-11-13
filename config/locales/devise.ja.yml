@@ -107,3 +107,6 @@ ja:
         signed_out: ログアウトしました。
       admin:
         signed_out: ログアウトしました。
+    errors:
+      messages:
+        one_admin_only: '管理者は1人のみ作成できます。'

@@ -17,7 +17,7 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    @shift.admin_id = current_admin["id"]
+    @shift.admin_id = current_admin['id']
     if @shift.save
       flash[:notice] = I18n.t('flash.shifts.create.success')
       redirect_to shifts_path
@@ -29,7 +29,7 @@ class ShiftsController < ApplicationController
 
   def destroy
     @shift = Shift.find_by(id: params[:id])
-    if @shift.admin_id == current_admin["id"]
+    if @shift.admin_id == current_admin['id']
       @shift.destroy
       flash[:notice] = I18n.t('flash.shifts.destroy.success')
     else
