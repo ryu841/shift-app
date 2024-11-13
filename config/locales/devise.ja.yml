@@ -21,6 +21,19 @@ ja:
               invalid: "は有効でありません。"
             password_confirmation:
               confirmation: "が一致していません。"
+        admin:
+          attributes:
+            email:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              invalid: "は有効でありません。"
+            password:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password_confirmation:
+              confirmation: "が一致していません。"
         shift:
           attributes:
             title_date:
@@ -44,6 +57,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
       shift:
         title_date: "シフトの日付"
         comment: "コメント"
@@ -54,6 +71,7 @@ ja:
         require_count: "募集人数"
     models:
       user: "ユーザー"
+      user: "管理者"
       shift: "シフト"
       shortfall: "募集シフト"
   errors:
@@ -79,9 +97,13 @@ ja:
     registrations:
       user:
         signed_up: ユーザー登録に成功しました。
+      admin:
+        signed_up: 管理者登録に成功しました。
     sessions:
       new:
         sign_in: ログイン
       signed_in: ログインしました。
       user:
+        signed_out: ログアウトしました。
+      admin:
         signed_out: ログアウトしました。
