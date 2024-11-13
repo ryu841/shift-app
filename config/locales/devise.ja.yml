@@ -71,7 +71,7 @@ ja:
         require_count: "募集人数"
     models:
       user: "ユーザー"
-      user: "管理者"
+      admin: "管理者"
       shift: "シフト"
       shortfall: "募集シフト"
   errors:

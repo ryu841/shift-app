@@ -3,6 +3,6 @@ FactoryBot.define do
     title_date { Time.zone.today }
     comment { 'コメント' }
 
-    # association :admin, factory: :admin
+    association :admin, factory: :admin
   end
 end

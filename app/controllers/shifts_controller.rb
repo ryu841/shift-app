@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:new, :create, :destroy]
 
   def index
     @shifts = Shift.limit(7).order(created_at: :desc)
@@ -17,7 +17,7 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    # @shift.user_id = current_user.id
+    @shift.admin_id = current_admin["id"]
     if @shift.save
       flash[:notice] = I18n.t('flash.shifts.create.success')
       redirect_to shifts_path
@@ -29,10 +29,12 @@ class ShiftsController < ApplicationController
 
   def destroy
     @shift = Shift.find_by(id: params[:id])
-    # if @shift.user == current_user
-    @shift.destroy
-    flash[:notice] = I18n.t('flash.shifts.destroy.success')
-    # end
+    if @shift.admin_id = current_admin["id"]
+      @shift.destroy
+      flash[:notice] = I18n.t('flash.shifts.destroy.success')
+    else
+      flash[:alert] = I18n.t('flash.shifts.destroy.failure')
+    end
     redirect_to shifts_path
   end
 

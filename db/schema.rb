@@ -30,8 +30,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_12_172501) do
   create_table "shifts", force: :cascade do |t|
     t.date "title_date", null: false
     t.string "comment"
+    t.integer "admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_shifts_on_admin_id"
   end
 
   create_table "shortfalls", force: :cascade do |t|
@@ -58,5 +60,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_12_172501) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "shifts", "admins"
   add_foreign_key "shortfalls", "shifts"
 end
