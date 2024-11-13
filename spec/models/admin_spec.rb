@@ -9,6 +9,7 @@ RSpec.describe Admin, type: :model do
     before do
       @admin = create(:admin, email: email, password: password, password_confirmation: password)
       @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント', admin_id: @admin.id)
+      @shift.shortfalls.create(start_time: '09:00', end_time: '15:00', require_count: 2)
     end
 
     subject { described_class.first }

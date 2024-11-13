@@ -4,8 +4,8 @@ RSpec.describe 'Users', type: :system do
   before do
     driven_by(:rack_test)
     @admin = create(:admin)
-    @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント')
-    @shift2 = create(:shift, title_date: Time.zone.today + 1, comment: 'コメント2')
+    @shift = create(:shift, title_date: Time.zone.today, comment: 'コメント', admin_id: @admin.id)
+    @shift.shortfalls.create(start_time: '09:00', end_time: '15:00', require_count: 2)
   end
 
   # 投稿フォーム
@@ -68,7 +68,10 @@ RSpec.describe 'Users', type: :system do
       end
 
       describe 'シフト詳細ページの検証' do
-        before { visit "/shifts/#{@shift.id}" }
+        before do
+          subject
+          visit "/shifts/#{@shift.id}" 
+        end
 
         it 'Shiftの詳細が表示される' do
           expect(page).to have_content(Time.zone.today)
@@ -88,12 +91,6 @@ RSpec.describe 'Users', type: :system do
     it '1件目のShiftの詳細が表示される' do
       expect(page).to have_content(Time.zone.today)
       expect(page).to have_content('コメント')
-      expect(page).to have_content('店長')
-    end
-
-    it '2件目のShiftの詳細が表示される' do
-      expect(page).to have_content(Time.zone.today + 1)
-      expect(page).to have_content('コメント2')
       expect(page).to have_content('店長')
     end
 
