@@ -34,8 +34,13 @@ class ShiftsController < ApplicationController
   def update
     @shift = Shift.find_by(id: params[:id])
     if @shift.update(shift_params)
+      Rails.logger.debug "Updated shift params: #{shift_params.inspect}"
+      @shift.reload
       redirect_to shifts_path
       flash[:notice] = I18n.t('flash.shifts.update.success')
+    else
+      flash[:alert] = I18n.t('flash.shifts.update.failure')
+      render :edit
     end
   end
 
@@ -55,6 +60,6 @@ class ShiftsController < ApplicationController
 
   def shift_params
     params.require(:shift).permit(:title_date, :comment,
-                                  shortfalls_attributes: [:start_time, :end_time, :require_count, :_destroy])
+                                  shortfalls_attributes: [:id, :start_time, :end_time, :require_count, :_destroy])
   end
 end

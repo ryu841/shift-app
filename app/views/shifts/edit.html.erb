@@ -1,7 +1,7 @@
 <%= javascript_importmap_tags "shortfall" %>
 
 <%= form_with model: @shift, class: "w-3/4 max-w-xl" do |f| %>
-  <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
+  <label class="block text-xl font-bold text-gray-700">募集シフト編集</label>
   <div class="mt-6">
     <label class="text-gray-700 text-lg">
       募集日付
@@ -52,6 +52,6 @@
     <%= f.text_area :comment, rows: "5", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
   </div>
   <div class="px-4 py-3 text-right sm:px-6">
-    <%= f.submit "作成", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <%= f.submit "変更", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
   </div>
 <% end %>

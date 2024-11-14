@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     Array.from(newShortfall.querySelectorAll('input, select')).forEach((input) => {
       input.name = input.name.replace(/\[\d+\]/, `[${shortfallIndex}]`);
       input.id = input.id.replace(/\_\d+\_/, `_${shortfallIndex}_`);
+      // hiddenフィールドのvalueを動的に変更
+      if (input.type === 'hidden') {
+      input.value = '';  // 新規追加なので、IDを空にして新しい値を設定
+       }
     });
   
     shortfallsContainer.appendChild(newShortfall);
