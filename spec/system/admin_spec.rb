@@ -24,7 +24,7 @@ RSpec.describe 'Admin', type: :system do
     context '正常系' do
       it 'ユーザーを作成できる' do
         expect { subject }.to change(Admin, :count).by(1)
-        expect(current_path).to eq('/')
+        expect(current_path).to eq('/shifts')
       end
     end
 
@@ -75,8 +75,8 @@ RSpec.describe 'Admin', type: :system do
     end
 
     context '正常系' do
-      it 'ログインに成功し、トップページにリダイレクトする' do
-        expect(current_path).to eq('/')
+      it 'ログインに成功し、シフト一覧ページにリダイレクトする' do
+        expect(current_path).to eq('/shifts')
       end
 
       it 'ログイン成功時のフラッシュメッセージを表示する' do

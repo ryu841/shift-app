@@ -50,7 +50,7 @@ RSpec.describe 'Home', type: :system do
       before do
         user = create(:user)
         sign_in user
-        visit '/'
+        visit '/shifts'
       end
 
       it 'ユーザー登録リンクは表示しない' do
@@ -96,7 +96,7 @@ RSpec.describe 'Home', type: :system do
       before do
         admin = create(:admin)
         sign_in admin
-        visit '/'
+        visit '/shifts'
       end
 
       it 'ユーザー登録リンクは表示しない' do
