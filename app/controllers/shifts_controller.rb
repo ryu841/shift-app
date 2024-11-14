@@ -34,7 +34,6 @@ class ShiftsController < ApplicationController
   def update
     @shift = Shift.find_by(id: params[:id])
     if @shift.update(shift_params)
-      Rails.logger.debug "Updated shift params: #{shift_params.inspect}"
       @shift.reload
       redirect_to shifts_path
       flash[:notice] = I18n.t('flash.shifts.update.success')
