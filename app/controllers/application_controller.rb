@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # ログイン後のリダイレクト先を指定
-  def after_sign_in_path_for(resource)
-    shifts_path(resource)
+  def after_sign_in_path_for(_resource)
+    shifts_path
   end
 
   protected
