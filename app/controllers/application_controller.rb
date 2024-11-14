@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン後のリダイレクト先を指定
   def after_sign_in_path_for(resource)
-    shifts_path
+    shifts_path(resource)
   end
 
   protected
