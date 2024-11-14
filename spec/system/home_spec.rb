@@ -6,10 +6,10 @@ RSpec.describe 'Home', type: :system do
   end
 
   describe 'トップページの検証' do
-    it 'Home#topという文字列が表示される' do
+    it 'Shiftappという文字列が表示される' do
       visit '/'
 
-      expect(page).to have_content('Home#top')
+      expect(page).to have_content('Shiftapp')
     end
   end
 
@@ -18,19 +18,19 @@ RSpec.describe 'Home', type: :system do
       before { visit '/' }
 
       it 'ユーザー登録リンクを表示する' do
-        expect(page).to have_link('ユーザー登録', href: '/users/sign_up')
+        expect(page).to have_link('新規登録', href: '/users/sign_up')
       end
 
       it '管理者登録リンクを表示する' do
-        expect(page).to have_link('管理者登録', href: '/admin/sign_up')
+        expect(page).to have_link('新規登録', href: '/admin/sign_up')
       end
 
       it 'ユーザーログインリンクを表示する' do
-        expect(page).to have_link('ユーザーログイン', href: '/users/sign_in')
+        expect(page).to have_link('ログイン', href: '/users/sign_in')
       end
 
       it '管理者ログインリンクを表示する' do
-        expect(page).to have_link('管理者ログイン', href: '/admin/sign_in')
+        expect(page).to have_link('ログイン', href: '/admin/sign_in')
       end
 
       it 'ログアウトリンクを表示しない' do
@@ -39,6 +39,10 @@ RSpec.describe 'Home', type: :system do
 
       it 'シフト作成リンクを表示しない' do
         expect(page).not_to have_link('シフト作成', href: '/shifts/new')
+      end
+
+      it '募集シフト一覧リンクを表示しない' do
+        expect(page).not_to have_link('募集シフト一覧', href: '/shifts')
       end
     end
 
@@ -50,19 +54,19 @@ RSpec.describe 'Home', type: :system do
       end
 
       it 'ユーザー登録リンクは表示しない' do
-        expect(page).not_to have_link('ユーザー登録', href: '/users/sign_up')
+        expect(page).not_to have_link('新規登録', href: '/users/sign_up')
       end
 
       it '管理者登録リンクは表示しない' do
-        expect(page).not_to have_link('管理者登録', href: '/admin/sign_up')
+        expect(page).not_to have_link('新規登録', href: '/admin/sign_up')
       end
 
       it 'ユーザーログインリンクは表示しない' do
-        expect(page).not_to have_link('ユーザーログイン', href: '/users/sign_in')
+        expect(page).not_to have_link('ログイン', href: '/users/sign_in')
       end
 
       it '管理者ログインリンクは表示しない' do
-        expect(page).not_to have_link('管理者ログイン', href: '/admin/sign_in')
+        expect(page).not_to have_link('ログイン', href: '/admin/sign_in')
       end
 
       it 'ログアウトリンクを表示する' do
@@ -80,10 +84,10 @@ RSpec.describe 'Home', type: :system do
       it 'ログアウトリンクが機能する' do
         click_button 'ログアウト'
 
-        expect(page).to have_link('ユーザー登録', href: '/users/sign_up')
-        expect(page).to have_link('管理者登録', href: '/admin/sign_up')
-        expect(page).to have_link('ユーザーログイン', href: '/users/sign_in')
-        expect(page).to have_link('管理者ログイン', href: '/admin/sign_in')
+        expect(page).to have_link('新規登録', href: '/users/sign_up')
+        expect(page).to have_link('新規登録', href: '/admin/sign_up')
+        expect(page).to have_link('ログイン', href: '/users/sign_in')
+        expect(page).to have_link('ログイン', href: '/admin/sign_in')
         expect(page).not_to have_button('ログアウト')
       end
     end
@@ -96,19 +100,19 @@ RSpec.describe 'Home', type: :system do
       end
 
       it 'ユーザー登録リンクは表示しない' do
-        expect(page).not_to have_link('ユーザー登録', href: '/users/sign_up')
+        expect(page).not_to have_link('新規登録', href: '/users/sign_up')
       end
 
       it '管理者登録リンクは表示しない' do
-        expect(page).not_to have_link('管理者登録', href: '/admin/sign_up')
+        expect(page).not_to have_link('新規登録', href: '/admin/sign_up')
       end
 
       it 'ユーザーログインリンクは表示しない' do
-        expect(page).not_to have_link('ユーザーログイン', href: '/users/sign_in')
+        expect(page).not_to have_link('ログイン', href: '/users/sign_in')
       end
 
       it '管理者ログインリンクは表示しない' do
-        expect(page).not_to have_link('管理者ログイン', href: '/admin/sign_in')
+        expect(page).not_to have_link('ログイン', href: '/admin/sign_in')
       end
 
       it 'ログアウトリンクを表示する' do
@@ -126,10 +130,10 @@ RSpec.describe 'Home', type: :system do
       it 'ログアウトリンクが機能する' do
         click_button 'ログアウト'
 
-        expect(page).to have_link('ユーザー登録', href: '/users/sign_up')
-        expect(page).to have_link('管理者登録', href: '/admin/sign_up')
-        expect(page).to have_link('ユーザーログイン', href: '/users/sign_in')
-        expect(page).to have_link('管理者ログイン', href: '/admin/sign_in')
+        expect(page).to have_link('新規登録', href: '/users/sign_up')
+        expect(page).to have_link('新規登録', href: '/admin/sign_up')
+        expect(page).to have_link('ログイン', href: '/users/sign_in')
+        expect(page).to have_link('ログイン', href: '/admin/sign_in')
         expect(page).not_to have_button('ログアウト')
       end
     end

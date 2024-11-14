@@ -1,4 +1,22 @@
 <div>
-  <h1 class="font-bold text-4xl">Home#top</h1>
-  <p>Find me in app/views/home/top.html.erb</p>
+  <div class="bg-white py-16 px-24 rounded-full" >
+    <div class="flex justify-center font-bold text-6xl mb-8">
+      Shiftapp
+    </div>
+    <div class="flex justify-center px-5">
+      <%= image_tag("17053.png", alt: "二人が握手している図", size: '400x400') %>
+    </div>
+    <div class="flex justify-center">
+      <h1 class="mt-7 font-bold text-2xl">ユーザー新規登録・ログインはこちら</h1>
+    </div>
+    <div class="flex justify-center mt-5 space-x-14 mb-5">
+      <%= link_to '新規登録', new_user_registration_path, class: "text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded-full" %>
+      <%= link_to "ログイン", new_user_session_path, class: "text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-12 border border-blue-500 hover:border-transparent rounded-full" %>
+    </div>
+  </div>
+  <div class="flex justify-center items-center mt-10 mb-10 space-x-8">
+    <h1 class="font-bold text-base">管理者新規登録・ログインはこちら</h1>
+      <%= link_to '新規登録', new_admin_registration_path, class: "self-center text-sm bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white py-2 px-5 border border-gray-500 hover:border-transparent rounded-full" %>
+      <%= link_to 'ログイン', new_admin_session_path, class: "self-center text-sm bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white py-2 px-6 border border-gray-500 hover:border-transparent rounded-full" %>
+  </div>
 </div>
