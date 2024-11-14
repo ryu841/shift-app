@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @shifts = Shift.limit(7).order(created_at: :desc)
@@ -15,6 +15,10 @@ class ShiftsController < ApplicationController
     @shift.shortfalls.build
   end
 
+  def edit
+    @shift = Shift.find_by(id: params[:id])
+  end
+
   def create
     @shift = Shift.new(shift_params)
     @shift.admin_id = current_admin['id']
@@ -24,6 +28,14 @@ class ShiftsController < ApplicationController
     else
       flash[:alert] = I18n.t('flash.shifts.create.failure')
       render :new
+    end
+  end
+
+  def update
+    @shift = Shift.find_by(id: params[:id])
+    if @shift.update(shift_params)
+      redirect_to shifts_path
+      flash[:notice] = I18n.t('flash.shifts.update.success')
     end
   end
 
