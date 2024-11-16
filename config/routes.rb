@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   root "home#top"
   resources :shifts, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  resources :shifts do
+    resources :tickets
+  end
 end

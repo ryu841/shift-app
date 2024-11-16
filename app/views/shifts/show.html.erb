@@ -33,7 +33,7 @@
                 <%= "#{shortfall.require_count}名" %>
               </p>
               <% if user_signed_in? %>
-                <%= button_to '参加する', shift_path(@shift), method: :post, class: "text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-1 px-3 border border-green-500 hover:border-transparent rounded" %>
+                <%= link_to "参加する", new_ticket_path(shift_id: @shift.id), remote: true, class: "text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-1 px-3 border border-green-500 hover:border-transparent rounded" %>
               <% end %>
             </div>
           <% end %>
