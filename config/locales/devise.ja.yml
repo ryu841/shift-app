@@ -50,6 +50,10 @@ ja:
               blank: "が入力されていません。"
             require_count:
               blank: "が入力されていません。"
+        ticket:
+          attributes:
+            comment:
+              too_long: "は%{count}文字以下に設定して下さい。"
     attributes:
       user:
         firstname: "姓"
@@ -69,11 +73,14 @@ ja:
         start_time: "開始時間"
         end_time: "終了時間"
         require_count: "募集人数"
+      ticket:
+        comment: "コメント"
     models:
       user: "ユーザー"
       admin: "管理者"
       shift: "シフト"
       shortfall: "募集シフト"
+      ticket: "参加申請"
   errors:
     messages:
       not_saved: "エラーが発生したため%{resource}は保存されませんでした。"
@@ -89,6 +96,13 @@ ja:
       destroy:
         success: "シフトが削除されました。"
         failure: "シフトの削除に失敗しました。"
+    tickets:
+      create:
+        success: "参加申請に成功しました。"
+        failure: "参加申請に失敗しました。"
+      destroy:
+        success: "参加申請をキャンセルしました。"
+        failure: "参加申請のキャンセルに失敗しました。"
 
   devise:
     failure:

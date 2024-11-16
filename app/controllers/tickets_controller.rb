@@ -10,10 +10,10 @@ class TicketsController < ApplicationController
       t.comment = params[:ticket][:comment]
     end
     if @ticket.save
-      flash[:notice] = "参加申請が送信されました"
+      flash[:notice] = I18n.t('flash.tickets.create.success')
       redirect_to shift_path(params[:shift_id])
     else
-      flash[:notice] = "参加申請に失敗しました"
+      flash[:alert] = I18n.t('flash.tickets.create.failure')
       redirect_to shift_path(params[:shift_id])
   end
 end
