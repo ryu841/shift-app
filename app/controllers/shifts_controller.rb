@@ -3,6 +3,8 @@ class ShiftsController < ApplicationController
 
   def index
     @shifts = Shift.limit(7).order(created_at: :desc)
+    @allshifts = Shift.all
+    @tickets = Ticket.includes(:user)
   end
 
   def show

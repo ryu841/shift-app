@@ -1,6 +1,10 @@
 ja:
   activerecord:
     errors:
+      messages:
+        not_saved: "エラーが発生したため%{resource}は保存されませんでした。"
+        record_invalid: "レコードが無効です: %{errors}"
+        blank: "このフィールドは必須です"
       models:
         user:
           attributes:
@@ -52,6 +56,9 @@ ja:
               blank: "が入力されていません。"
         ticket:
           attributes:
+            user:
+              required: "ユーザーを選択してください"
+              blank: "ユーザーを選択してください"
             comment:
               too_long: "は%{count}文字以下に設定して下さい。"
     attributes:
@@ -81,9 +88,6 @@ ja:
       shift: "シフト"
       shortfall: "募集シフト"
       ticket: "参加申請"
-  errors:
-    messages:
-      not_saved: "エラーが発生したため%{resource}は保存されませんでした。"
 
   flash:
     shifts:
