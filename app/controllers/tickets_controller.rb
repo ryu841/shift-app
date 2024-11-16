@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   
   def create
     shift = Shift.find(params[:shift_id])
-    @ticket.status = 'pending'
+    # @ticket.status = 'pending'
     @ticket = current_user.tickets.build do |t|
       t.shift = shift
       t.comment = params[:ticket][:comment]
@@ -15,5 +15,6 @@ class TicketsController < ApplicationController
     else
       flash[:alert] = I18n.t('flash.tickets.create.failure')
       redirect_to shift_path(params[:shift_id])
+    end
   end
 end
