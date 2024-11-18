@@ -86,9 +86,20 @@
                     <%= "#{shortfall.start_time&.strftime("%H:%M")} ~ #{shortfall.end_time&.strftime("%H:%M")}" %>
                   </li>
                   <li>
-                    <button class="text-sm bg-transparent text-green-700 py-1 px-3 border border-green-500 rounded">
-                    承認待ち
-                    </button>
+                    <% case ticket.status %>
+                    <% when 'pending' %>
+                      <p class="text-sm bg-transparent text-blue-700 py-1 px-3 border border-blue-500 rounded">
+                      承認待ち
+                      </p>
+                    <% when 'approved' %>
+                      <p class="text-sm bg-transparent text-green-700 py-1 px-3 border border-green-500 rounded">
+                      承認済み
+                      </p>
+                    <% when 'rejected' %>
+                      <p class="text-sm bg-transparent text-red-700 py-1 px-3 border border-red-500 rounded">
+                      承認却下
+                      </p>
+                    <% end %>
                   </li>
                 </div>
               <% end %>
