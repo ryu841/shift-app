@@ -29,8 +29,18 @@ class TicketsController < ApplicationController
   def destroy
     ticket = current_user.tickets.find_by!(shift_id: params[:shift_id], id: params[:id])
     ticket.destroy!
-    redirect_to shift_path(params[:shift_id])
-    flash[:notice] = I18n.t('flash.tickets.destroy.success')
+
+    case params[:type]
+    when "cancel"
+      redirect_to shift_path(params[:shift_id])
+      flash[:notice] = I18n.t('flash.tickets.cansel.success')
+    when "delete"
+      redirect_to shifts_path
+      flash[:notice] = I18n.t('flash.tickets.delete.success')
+    else
+      flash[:alert] = I18n.t('flash.tickets.unknown_action')
+      redirect_to root_path
+    end
   end
 
   def approve

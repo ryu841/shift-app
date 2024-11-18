@@ -1,4 +1,5 @@
 <%= javascript_importmap_tags "ticket_modal" %>
+<%= javascript_importmap_tags "cancel_modal" %>
 
 <div class="space-y-6 w-3/4 max-w-lg">
   <label class="block text-xl font-bold text-gray-700">シフト詳細</label>
@@ -35,7 +36,20 @@
                   <%= "#{shortfall.require_count}名" %>
                 </p>
                 <% if @ticket %>
-                  <%= button_to "キャンセルする", shift_ticket_path(@shift, @ticket), method: :delete, class: "text-sm bg-transparent hover:bg-red-500 text-red-700 hover:text-white py-1 px-3 border border-red-500 hover:border-transparent rounded" %>
+                  <button id="cancel-button" class="text-sm bg-transparent hover:bg-red-500 text-red-700 hover:text-white py-1 px-3 border border-red-500 hover:border-transparent rounded" >
+                    キャンセルする
+                  </button>
+                  <div id="cancel-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+                      <h2 class="text-xl font-bold mb-4">参加申請をキャンセルしますか？</h2>
+                      <div class="flex justify-end space-x-4">
+                        <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
+                          キャンセル
+                        </button>
+                        <%= button_to "送信", shift_ticket_path(@shift, @ticket, type: "cancel"), method: :delete, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
+                      </div>
+                    </div>
+                  </div>
                 <% elsif user_signed_in? %>
                   <button id="ticket-button", class="text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-1 px-3 border border-green-500 hover:border-transparent rounded">
                     参加する

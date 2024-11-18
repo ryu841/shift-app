@@ -104,15 +104,19 @@ ja:
       create:
         success: "参加申請に成功しました。"
         failure: "参加申請に失敗しました。"
-      destroy:
+      cansel:
         success: "参加申請をキャンセルしました。"
         failure: "参加申請のキャンセルに失敗しました。"
+      delete:
+        success: "参加申請中のシフトを削除しました。"
+        failure: "参加申請の削除に失敗しました。"
       approve:
         success: "参加申請を承認しました。"
         failure: "参加申請の承認に失敗しました。"
       reject:
         success: "参加申請を却下しました。"
         failure: "参加申請の却下に失敗しました。"
+      unknown_action: "不明なアクションです。"
 
   devise:
     failure:
