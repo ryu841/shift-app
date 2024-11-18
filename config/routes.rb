@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   root "home#top"
-  resources :shifts, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-  resources :shifts do
-    resources :tickets
+  resources :shifts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
+    resources :tickets, only: [:create, :destroy]
   end
 end

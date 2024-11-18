@@ -10,6 +10,8 @@ class ShiftsController < ApplicationController
   def show
     @shift = Shift.find_by(id: params[:id])
     @shortfalls = @shift.shortfalls
+    @ticket = current_user && current_user.tickets.find_by(shift: @shift)
+    @tickets = @shift.tickets.includes(:user)
   end
 
   def new

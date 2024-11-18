@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   def new
   end
-  
+
   def create
     @shift = Shift.find(params[:shift_id])
     # @ticket = @shift.tickets.build(ticket_params)
@@ -17,6 +17,13 @@ class TicketsController < ApplicationController
       flash[:alert] = I18n.t('flash.tickets.create.failure')
       redirect_to shift_path(params[:shift_id])
     end
+  end
+
+  def destroy
+    ticket = current_user.tickets.find_by!(shift_id: params[:shift_id], id: params[:id])
+    ticket.destroy!
+    redirect_to shift_path(params[:shift_id])
+    flash[:notice] = I18n.t('flash.tickets.destroy.success')
   end
 
   private
