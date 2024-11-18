@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:approve, :reject]
-  before_action :set_shift, only: [:create, :reject, :destroy]
+  before_action :set_shift, only: [:create, :reject, :destroy, :create]
 
   def index
     @shifts = Shift.includes(:tickets).all
@@ -12,11 +12,11 @@ class TicketsController < ApplicationController
   
   def create
     # @ticket = @shift.tickets.build(ticket_params)
-    @ticket.status = 'pending'
     @ticket = @shift.tickets.build(ticket_params) do |t|
       t.shift = @shift
       t.comment = params[:ticket][:comment]
     end
+    @ticket.status = 'pending'
     if @ticket.save
       flash[:notice] = I18n.t('flash.tickets.create.success')
       redirect_to shift_path(params[:shift_id])
