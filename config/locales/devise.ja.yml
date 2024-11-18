@@ -107,6 +107,12 @@ ja:
       destroy:
         success: "参加申請をキャンセルしました。"
         failure: "参加申請のキャンセルに失敗しました。"
+      approve:
+        success: "参加申請を承認しました。"
+        failure: "参加申請の承認に失敗しました。"
+      reject:
+        success: "参加申請を却下しました。"
+        failure: "参加申請の却下に失敗しました。"
 
   devise:
     failure:
