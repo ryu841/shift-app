@@ -46,7 +46,7 @@
     </label>
     <div tabindex="0" aria-label="card 1" class="focus:outline-none mb-7 bg-white shadow rounded">
       <ul>
-        <% @tickets.each do |ticket| %>
+        <% @tickets.select { |ticket| ticket.status == 'pending' }.each do |ticket| %>
           <% @allshifts.each do |shift| %>
             <% shift.shortfalls.each do |shortfall| %>
               <% if ticket.shortfall_id == shortfall.id %>
@@ -63,6 +63,11 @@
               <% end %>
             <% end %>
           <% end %>
+        <% end %>
+        <% if @tickets.none? { |ticket| ticket.status == 'pending' } %>
+          <div class="flex justify-center">
+            <p class="text-base text-gray-700 p-6" >現在、参加申請されているシフトはありません。</p>
+          </div>
         <% end %>
       </ul>
     </div>
