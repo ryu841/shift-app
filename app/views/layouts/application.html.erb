@@ -23,5 +23,12 @@
     <main class="container mx-auto mt-20 px-5 flex items-center justify-center">
       <%= yield %>
     </main>
+    <% if controller_name == "shifts" && action_name == "index" %>
+      <% if @shifts.present? %>
+        <div class="flex justify-center">
+          <%= paginate @shifts %>
+        </div>
+      <% end %>
+    <% end %>
   </body>
 </html>
