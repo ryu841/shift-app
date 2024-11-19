@@ -27,6 +27,7 @@ class ShiftsController < ApplicationController
     @shift = Shift.new(shift_params)
     @shift.admin_id = current_admin['id']
     if @shift.save
+      Shift.delete_old_shifts
       flash[:notice] = I18n.t('flash.shifts.create.success')
       redirect_to shifts_path
     else
