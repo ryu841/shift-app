@@ -18,7 +18,7 @@
 
       <% if @tickets.none? { |ticket| ticket.status == 'pending' } %>
         <div class="flex justify-center focus:outline-none mb-7 bg-white shadow rounded">
-          <p class="text-base text-gray-700 p-6" >現在、参加申請されているシフトはありません。</p>
+          <p class="text-base text-gray-700 p-5" >現在、参加申請されているシフトはありません。</p>
         </div>
       <% end %>
   </ul>
