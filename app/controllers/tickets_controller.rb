@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
 
   def new
   end
-  
+
   def create
     # @ticket = @shift.tickets.build(ticket_params)
     @ticket = @shift.tickets.build(ticket_params) do |t|
@@ -19,11 +19,22 @@ class TicketsController < ApplicationController
     @ticket.status = 'pending'
     if @ticket.save
       flash[:notice] = I18n.t('flash.tickets.create.success')
-      redirect_to shift_path(params[:shift_id])
     else
       flash[:alert] = I18n.t('flash.tickets.create.failure')
-      redirect_to shift_path(params[:shift_id])
     end
+    redirect_to shift_path(params[:shift_id])
+  end
+
+  def update
+    ticket = Ticket.find(params[:id])
+    if params[:status] == 'approved'
+      ticket.update!(status: 'approved')
+      flash[:notice] = I18n.t('flash.tickets.approve.success')
+    elsif params[:status] == 'rejected'
+      ticket.update!(status: 'rejected')
+      flash[:notice] = I18n.t('flash.tickets.reject.success')
+    end
+    redirect_to tickets_path
   end
 
   def destroy
@@ -31,12 +42,12 @@ class TicketsController < ApplicationController
     ticket.destroy!
 
     case params[:type]
-    when "cancel"
-      redirect_to shift_path(params[:shift_id])
+    when 'cancel'
       flash[:notice] = I18n.t('flash.tickets.cansel.success')
-    when "delete"
-      redirect_to shifts_path
+      redirect_to shift_path(params[:shift_id])
+    when 'delete'
       flash[:notice] = I18n.t('flash.tickets.delete.success')
+      redirect_to shifts_path
     else
       flash[:alert] = I18n.t('flash.tickets.unknown_action')
       redirect_to root_path
@@ -55,19 +66,8 @@ class TicketsController < ApplicationController
     redirect_to shift_tickets_path(@ticket.shift_id)
   end
 
-  def update
-    ticket = Ticket.find(params[:id])
-    if params[:status] == 'approved'
-      ticket.update!(status: 'approved')
-      flash[:notice] = I18n.t('flash.tickets.approve.success')
-    elsif params[:status] == 'rejected'
-      ticket.update!(status: 'rejected')
-      flash[:notice] = I18n.t('flash.tickets.reject.success')
-    end
-    redirect_to tickets_path
-  end
-
   private
+
   def ticket_params
     params.require(:ticket).permit(:comment, :shortfall_id, :user_id).merge(user_id: current_user.id)
   end

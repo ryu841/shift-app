@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :tickets
+  has_many :tickets, dependent: :destroy
   has_many :shifts, through: :tickets
   has_many :shortfalls, dependent: :destroy
   devise :database_authenticatable, :registerable,
