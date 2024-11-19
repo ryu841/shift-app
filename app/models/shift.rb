@@ -10,7 +10,7 @@ class Shift < ApplicationRecord
   validates :title_date, presence: true
 
   def self.delete_old_shifts
-    where('title_date < ?', Time.zone.today - 7.days).destroy_all
+    where(title_date: ...Time.zone.today - 7.days).destroy_all
   end
 
   private
