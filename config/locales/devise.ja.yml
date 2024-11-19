@@ -138,3 +138,10 @@ ja:
     errors:
       messages:
         one_admin_only: '管理者は1人のみ作成できます。'
+  views:
+    pagination:
+      first: "&laquo; 最初へ"
+      last: "最後へ &raquo;"
+      previous: "&lsaquo; 前へ"
+      next: "次へ &rsaquo;"
+      truncate: "&hellip;"
