@@ -46,7 +46,7 @@ RSpec.describe 'Users', type: :system do
       end
 
       context 'パラメータが正常な場合' do
-        it 'Postを作成できる' do
+        it 'Shiftを作成できる' do
           expect { subject }.to change(Shift, :count).by(1)
           expect(current_path).to eq('/shifts')
           expect(page).to have_content('シフトが作成されました。')
@@ -64,6 +64,16 @@ RSpec.describe 'Users', type: :system do
         it '入力していた内容は維持される' do
           subject
           expect(page).to have_field('shift_comment', with: comment)
+        end
+      end
+
+      context '募集日付が過去の日付の場合' do
+        let(:title_date) { Time.zone.today - 1.day }
+
+        it 'Shiftを作成できない' do
+          expect { subject }.not_to change(Shift, :count)
+          expect(page).to have_content('シフトの作成に失敗しました。')
+          expect(page).to have_content('シフトの日付 は今日以降の日付を選択してください。')
         end
       end
 

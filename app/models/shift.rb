@@ -24,7 +24,7 @@ class Shift < ApplicationRecord
 
   def title_date_cannot_be_in_the_past
     if title_date.present? && title_date < Time.zone.today
-      errors.add(:title_date, "は今日以降の日付を選択してください")
+      errors.add(:title_date, "は今日以降の日付を選択してください。")
     end
   end
 end
