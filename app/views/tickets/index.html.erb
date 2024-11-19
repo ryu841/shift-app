@@ -3,12 +3,12 @@
 
   <ul>
       <% @tickets.select { |ticket| ticket.status == 'pending' }.each do |ticket| %>
-          <li class="flex justify-between border-b border-gray-200 py-4">
-            <div tabindex="0" aria-label="card 1" class="focus:outline-none bg-white p-6 shadow rounded max-w-lg w-full">
-              <p class="border-b border-gray-200 pb-4 text-base"><strong>申請者:</strong> <%= ticket.user.firstname + ticket.user.lastname %></p>
-              <p class="border-b border-gray-200 pb-4 pt-4 text-base"><strong>コメント:</strong> <%= ticket.comment %></p>
-              <p class="border-b border-gray-200 pb-4 pt-4 text-base"><strong>送信日時:</strong> <%= ticket.created_at.strftime('%Y-%m-%d %H:%M') %></p>
-              <div class="flex space-x-4 mt-4">
+          <li class="border-b border-gray-200 py-6 px-10 mb-7 focus:outline-none bg-white shadow rounded">
+            <div tabindex="0", class="w-full">
+              <p class="border-b border-gray-200 pb-4 text-base"><strong>申請者：</strong> <%= ticket.user.firstname + ticket.user.lastname %></p>
+              <p class="border-b border-gray-200 pb-4 pt-4 text-base"><strong>コメント：</strong> <%= ticket.comment %></p>
+              <p class="border-b border-gray-200 pb-4 pt-4 text-base"><strong>送信日時：</strong> <%= ticket.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+              <div class="flex space-x-4 mt-6 px-32 justify-center">
                 <%= button_to "承認する", approve_shift_ticket_path(ticket.shift, ticket), method: :patch, class: "bg-green-500 text-white py-2 px-4 rounded" %>
                 <%= button_to "却下する", reject_shift_ticket_path(ticket.shift, ticket), method: :patch, class: "bg-red-500 text-white py-2 px-4 rounded" %>
               </div>
@@ -18,7 +18,7 @@
 
       <% if @tickets.none? { |ticket| ticket.status == 'pending' } %>
         <div class="flex justify-center focus:outline-none mb-7 bg-white shadow rounded">
-          <p class="text-base text-gray-700 p-5" >現在、参加申請されているシフトはありません。</p>
+          <p class="text-base text-gray-700 py-5 px-24" >現在、参加申請されているシフトはありません。</p>
         </div>
       <% end %>
   </ul>
