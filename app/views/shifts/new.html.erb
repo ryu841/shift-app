@@ -1,5 +1,7 @@
 <%= javascript_importmap_tags "shortfall" %>
 
+
+
 <%= form_with model: @shift, class: "w-3/4 max-w-xl" do |f| %>
   <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
   <div class="mt-6">
@@ -7,6 +9,15 @@
       募集日付
     </label>
     <%= f.date_field :title_date, class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+      <% if @shift.errors.any? %>
+        <div class="error-messages mt-1">
+          <ul>
+            <% @shift.errors.full_messages.each do |msg| %>
+              <li class="text-red-700" ><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
   </div>
   <div class="mt-6">
     <label class="text-gray-700 text-lg">

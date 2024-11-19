@@ -8,6 +8,7 @@ class Shift < ApplicationRecord
   accepts_nested_attributes_for :shortfalls, allow_destroy: true, reject_if: :all_blank, limit: 5
 
   validates :title_date, presence: true
+  validate :title_date_cannot_be_in_the_past
 
   def self.delete_old_shifts
     where(title_date: ...Time.zone.today - 7.days).destroy_all
@@ -19,5 +20,11 @@ class Shift < ApplicationRecord
     return unless title_date.present? && title_date <= 7.days.ago.to_date
 
     self.archived = true
+  end
+
+  def title_date_cannot_be_in_the_past
+    if title_date.present? && title_date < Time.zone.today
+      errors.add(:title_date, "は今日以降の日付を選択してください")
+    end
   end
 end
