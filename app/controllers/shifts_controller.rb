@@ -2,7 +2,7 @@ class ShiftsController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @shifts = Shift.limit(7).order(created_at: :desc)
+    @shifts = Shift.where('title_date >= ?', Date.today).limit(7).order(created_at: :desc)
     @allshifts = Shift.all
     @tickets = Ticket.includes(:user)
   end
