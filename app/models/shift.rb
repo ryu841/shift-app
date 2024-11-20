@@ -9,6 +9,7 @@ class Shift < ApplicationRecord
 
   validates :title_date, presence: true
   validate :title_date_cannot_be_in_the_past
+  validates :comment, length: { maximum: 100 }, allow_blank: true
 
   def self.delete_old_shifts
     where(title_date: ...Time.zone.today - 7.days).destroy_all

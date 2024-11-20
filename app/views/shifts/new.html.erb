@@ -2,20 +2,20 @@
 
 <%= form_with model: @shift, class: "w-3/4 max-w-xl" do |f| %>
   <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
+  <% if @shift.errors.any? %>
+    <div class="error-messages mt-4">
+      <ul>
+        <% @shift.errors.full_messages.each do |msg| %>
+          <li class="text-red-700" ><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="mt-6">
     <label class="text-gray-700 text-lg">
       募集日付
     </label>
     <%= f.date_field :title_date, class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
-      <% if @shift.errors.any? %>
-        <div class="error-messages mt-1">
-          <ul>
-            <% @shift.errors.full_messages.each do |msg| %>
-              <li class="text-red-700" ><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
   </div>
   <div class="mt-6">
     <label class="text-gray-700 text-lg">
@@ -51,13 +51,14 @@
       募集時間を削除
     </button>
   </div>
-  <div class="flex justify-end self-center mt-2">
+  <div class="flex justify-end self-center mt-2 text-gray-700">
     <p>(5つまで追加できます)</p>
   </div>
   <div class="mt-6">
-    <label class="text-gray-700 text-lg">
-      コメント
-    </label>
+    <div class="flex">
+      <label class="text-gray-700 text-lg">コメント</label>
+      <p class="text-gray-700 text-sm items-center flex">（100文字以内）</p>
+    </div>
     <%= f.text_area :comment, rows: "5", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
   </div>
   <div class="px-4 py-3 text-right sm:px-6">

@@ -31,6 +31,7 @@ class ShiftsController < ApplicationController
       flash[:notice] = I18n.t('flash.shifts.create.success')
       redirect_to shifts_path
     else
+      @shift.shortfalls.build if @shift.shortfalls.empty?
       flash[:alert] = I18n.t('flash.shifts.create.failure')
       render :new
     end
