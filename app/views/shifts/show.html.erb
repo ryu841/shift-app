@@ -41,7 +41,7 @@
                   </button>
                   <div id="cancel-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
                     <div class="bg-white rounded-lg shadow-lg w-96 p-6">
-                      <h2 class="text-xl font-bold mb-4">参加申請をキャンセルしますか？</h2>
+                      <h2 class="text-xl font-bold mb-4 text-gray-700">参加申請をキャンセルしますか？</h2>
                       <div class="flex justify-end space-x-4">
                         <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
                           キャンセル
@@ -57,17 +57,21 @@
                 <% end %>
                 <div id="ticket-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
                   <div class="bg-white rounded-lg shadow-lg w-96 p-6">
-                    <h2 class="text-xl font-bold mb-4">参加コメント</h2>
+                    <div class="flex mb-4 text-gray-700">
+                      <h2 class="text-xl font-bold">参加コメント</h2>
+                      <p class="text-sm items-center flex">（50文字以内）</p>
+                    </div>
                     <%= form_with model:@shift.tickets.build, url: shift_tickets_path(@shift), local: true do |f| %>
                       <%= f.hidden_field :shortfall_id, value: shortfall.id %>
                       <div class="mb-4">
-                        <%= f.text_area :comment, rows: 4, class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
+                        <%= f.text_area :comment, rows: 4, id: 'comment-field', class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
+                        <div id="comment-error" class="text-red-500 text-sm mt-1 hidden">コメントは50文字以内で入力してください。</div>
                       </div>
                       <div class="flex justify-end space-x-4">
                         <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
                           キャンセル
                         </button>
-                        <%= f.submit "送信", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
+                        <%= f.submit "送信", id: "submit-button", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
                       </div>
                     <% end %>
                   </div>
