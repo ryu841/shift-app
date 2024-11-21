@@ -1,22 +1,22 @@
 <div>
-  <div class="bg-white py-16 px-24 rounded-full" >
-    <div class="flex justify-center font-bold text-6xl mb-8">
+  <div class="bg-white rounded-3xl py-8 sm:py-16 sm:px-24 sm:rounded-full" >
+    <div class="flex justify-center font-bold mb-8 text-5xl md:text-6xl ">
       Shiftapp
     </div>
-    <div class="flex justify-center px-5">
+    <div class="flex justify-center px-6 md:px-5">
       <%= image_tag("17053.png", alt: "二人が握手している図", size: '400x400') %>
     </div>
     <div class="flex justify-center">
-      <h1 class="mt-7 font-bold text-2xl">ユーザー新規登録・ログインはこちら</h1>
+      <h1 class="mt-7 font-bold text-xl md:text-2xl text-gray-700">ユーザー新規登録・ログインはこちら</h1>
     </div>
-    <div class="flex justify-center mt-5 space-x-14 mb-5">
-      <%= link_to '新規登録', new_user_registration_path, class: "text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded-full" %>
-      <%= link_to "ログイン", new_user_session_path, class: "text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-12 border border-blue-500 hover:border-transparent rounded-full" %>
+    <div class="grid grid-rows-1 max-md:px-20 mt-6 md:my-5 md:space-x-14 md:flex md:justify-center text-center text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white hover:border-transparent">
+      <%= link_to '新規登録', new_user_registration_path, class: "max-md:mb-4 py-2 px-10 border border-blue-500 rounded-full" %>
+      <%= link_to "ログイン", new_user_session_path, class: "py-2 px-12 border border-blue-500 rounded-full" %>
     </div>
   </div>
-  <div class="flex justify-center items-center mt-10 mb-10 space-x-8">
-    <h1 class="font-bold text-base">管理者新規登録・ログインはこちら</h1>
-      <%= link_to '新規登録', new_admin_registration_path, class: "self-center text-sm bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white py-2 px-5 border border-gray-500 hover:border-transparent rounded-full" %>
-      <%= link_to 'ログイン', new_admin_session_path, class: "self-center text-sm bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white py-2 px-6 border border-gray-500 hover:border-transparent rounded-full" %>
+  <div class="text-center md:flex md:justify-center md:items-center my-10 md:space-x-8 self-center text-sm bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white">
+    <h1 class="font-bold text-base max-md:mb-6">管理者新規登録・ログインはこちら</h1>
+      <%= link_to '新規登録', new_admin_registration_path, class: "py-2 px-10 md:px-5 border border-gray-500 hover:border-transparent rounded-full" %>
+      <%= link_to 'ログイン', new_admin_session_path, class: "py-2 px-[2.99rem] md:px-[1.74rem] border border-gray-500 hover:border-transparent rounded-full" %>
   </div>
 </div>
