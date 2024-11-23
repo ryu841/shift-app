@@ -2,7 +2,7 @@
 
 <div class="md:grid md:grid-cols-7 md:gap-6 md:4/5 xl:w-3/5 md:grid-reverse">
   <% if admin_signed_in? %>
-    <div class="col-span-3 sm:order-2">
+    <div class="col-span-3 md:order-2">
       <label class="block text-xl font-bold text-gray-700">
         <%= link_to "参加申請一覧", tickets_path %>
       </label>
@@ -43,7 +43,7 @@
   <% end %>
   
   <% if user_signed_in? %>
-    <div class="space-y-6 col-span-3 sm:order-2">
+    <div class="space-y-6 col-span-3 md:order-2">
       <label class="block text-xl font-bold text-gray-700">参加申請中のシフト一覧</label>
       <div class="focus:outline-none mb-7 bg-white shadow rounded">
         <ul>
@@ -108,7 +108,7 @@
     </div>
   <% end %>
 
-  <div class="space-y-6 col-span-4 sm:order-1">
+  <div class="space-y-6 col-span-4 md:order-1">
     <label class="block text-xl font-bold text-gray-700 mt-10 md:mt-0">募集シフト一覧</label>
     <% if @shifts.present? %>
       <% @shifts.each do |shift| %>
