@@ -6,10 +6,10 @@ RSpec.describe 'Home', type: :system do
   end
 
   describe 'トップページの検証' do
-    it 'Shiftappという文字列が表示される' do
+    it 'S-Connectという文字列が表示される' do
       visit '/'
 
-      expect(page).to have_content('Shiftapp')
+      expect(page).to have_content('S-Connect')
     end
   end
 
