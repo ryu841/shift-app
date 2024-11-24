@@ -37,6 +37,14 @@ RSpec.describe 'Admin', type: :system do
         end
       end
 
+      context 'emailが有効でない場合' do
+        let(:email) { 'testexample.com' }
+        it 'ユーザーを作成せず、エラーメッセージを表示する' do
+          expect { subject }.not_to change(User, :count)
+          expect(page).to have_content('メールアドレス は有効でありません。')
+        end
+      end
+
       context 'passwordが空の場合' do
         let(:password) { '' }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
