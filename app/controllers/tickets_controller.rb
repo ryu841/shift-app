@@ -11,7 +11,6 @@ class TicketsController < ApplicationController
   end
 
   def create
-    # @ticket = @shift.tickets.build(ticket_params)
     @ticket = @shift.tickets.build(ticket_params) do |t|
       t.shift = @shift
       t.comment = params[:ticket][:comment]

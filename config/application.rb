@@ -26,6 +26,9 @@ module ShiftApp
 
     # 日本語用ファイルを使用
     config.i18n.default_locale = :ja 
+    # タイムゾーン設定を変更
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
 
     config.generators do |g|
       g.assets false # CSS, JavaScriptファイルを自動生成しない
