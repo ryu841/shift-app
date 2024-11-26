@@ -5,6 +5,11 @@ class ShiftsController < ApplicationController
     @shifts = Shift.where(title_date: Time.zone.today..).order(created_at: :desc).page(params[:page]).per(7)
     @allshifts = Shift.all
     @tickets = Ticket.includes(:user)
+    @my_tickets = if current_user.present?
+                    Ticket.where(user_id: current_user.id).includes(:shortfall)
+                  else
+                    []
+                  end
   end
 
   def show

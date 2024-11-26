@@ -122,6 +122,7 @@ ja:
     failure:
       unauthenticated: "ログインが必要です。"
       invalid: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: '入力された情報が間違っているか、登録されていない可能性があります。'
     registrations:
       user:
         signed_up: ユーザー登録に成功しました。
@@ -138,6 +139,8 @@ ja:
     errors:
       messages:
         one_admin_only: '管理者は1人のみ作成できます。'
+    user:
+      not_found_in_database: '入力された情報のユーザーは見つかりませんでした。'
   views:
     pagination:
       first: "&laquo; 最初へ"
