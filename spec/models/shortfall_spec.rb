@@ -20,8 +20,8 @@ RSpec.describe Shortfall, type: :model do
 
   describe 'Shortfallが持つ情報の検証' do
     it 'Shortfallの属性値を返す' do
-      expect(shortfall.start_time).to eq('2024-11-11 09:00:00')
-      expect(shortfall.end_time).to eq('2024-11-11 15:00:00')
+      expect(shortfall.start_time).to eq(Time.zone.parse('2024-11-11 09:00:00'))
+      expect(shortfall.end_time).to eq(Time.zone.parse('2024-11-11 15:00:00'))
       expect(shortfall.require_count).to eq(2)
     end
   end
