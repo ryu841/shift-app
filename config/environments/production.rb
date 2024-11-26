@@ -1,9 +1,3 @@
-server "54.248.9.239", user: "nakao", roles: %w{app db web}
-set :ssh_options, {
-  keys: %w(~/.ssh/S_Connect.pem),
-  forward_agent: true,
-  auth_methods: %w(publickey),
-}
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
