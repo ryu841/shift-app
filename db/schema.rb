@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2024_11_19_112812) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,7 +33,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_112812) do
   create_table "shifts", force: :cascade do |t|
     t.date "title_date", null: false
     t.string "comment"
-    t.integer "admin_id", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "archived", default: false
@@ -41,15 +44,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_112812) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "require_count"
-    t.integer "shift_id", null: false
+    t.bigint "shift_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shift_id"], name: "index_shortfalls_on_shift_id"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shift_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "shift_id", null: false
     t.text "comment"
     t.string "status"
     t.datetime "created_at", null: false

@@ -1,3 +1,9 @@
+server "54.248.9.239", user: "nakao", roles: %w{app db web}
+set :ssh_options, {
+  keys: %w(~/.ssh/S_Connect.pem),
+  forward_agent: true,
+  auth_methods: %w(publickey),
+}
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -18,7 +24,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false

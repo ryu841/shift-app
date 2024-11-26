@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.2.1', '>= 7.2.1.2'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem 'pg', '~> 1.1'
 gem 'sprockets-rails'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '>= 1.4'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -49,6 +48,11 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rbenv-vars', '~> 0.1'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
