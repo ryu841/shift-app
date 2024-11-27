@@ -6,7 +6,7 @@ gem 'rails', '~> 7.2.1', '>= 7.2.1.2'
 gem 'pg', '~> 1.1'
 gem 'sprockets-rails'
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
+gem 'puma', '>= 6.0'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
@@ -49,7 +49,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'capistrano', '~> 3.10', require: false
-  gem 'capistrano3-puma'
+  gem 'capistrano3-puma', '6.0.0.beta.1'
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'

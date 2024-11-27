@@ -80,7 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: shift_app_production
-  username: shift_app
+  database: S_Connect_production
+  username: postgres
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:hostname] %>
