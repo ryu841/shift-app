@@ -49,7 +49,7 @@
         <ul>
           <% @my_tickets.each do |ticket| %>
             <% @allshifts.each do |shift| %>
-              <% shift.shortfalls.each do |shortfall| %>
+              <% shift.shortfalls.each_with_index do |shortfall, index| %>
                 <% if ticket.shortfall_id == shortfall.id  %>
                   <div class="flex justify-around items-center border-b border-gray-200 py-4 px-3">
                     <div class="lg:flex">
@@ -77,15 +77,15 @@
                       <% end %>
                     </li>
                     <li>
-                      <button id="delete-button" class="ml-2 text-sm bg-blue-500 text-white py-2 lg:py-1 px-3 lg:px-2 rounded" >
+                      <button id="delete-button-<%= index %>" class="ml-2 text-sm bg-blue-500 text-white py-2 lg:py-1 px-3 lg:px-2 rounded" >
                         確認
                       </button>
-                      <div id="delete-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                      <div id="delete-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
                         <div class="bg-white rounded-lg shadow-lg w-96 p-6 max-sm:m-2">
                           <h2 class="text-xl font-bold mb-4 text-gray-700">参加申請中のシフト一覧からこのシフトを削除しますか？</h2>
                           <p class="text-sm mb-4 text-red-700">（参加申請をキャンセルする場合は募集シフト一覧からキャンセル申請を行ってください）</p>
                           <div class="flex justify-end space-x-4">
-                            <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
+                            <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
                               キャンセル
                             </button>
                             <%= button_to "送信", shift_ticket_path(shift, ticket, type: "delete"), method: :delete, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>

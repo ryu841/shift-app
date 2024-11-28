@@ -1,22 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const modalDelete = document.querySelectorAll("#delete-modal");
-  const openButtonDelete = document.querySelectorAll("#delete-button");
-  const closeButtonDelete = document.querySelectorAll("#modal-cancel");
+  const openButtonDelete = document.querySelectorAll(`[id^="delete-button-"]`);
 
-  // モーダルを開く
-  openButtonDelete.addEventListener("click", () => {
-    modalDelete.classList.remove("hidden");
-  });
+  openButtonDelete.forEach(button => {
+    const index = button.id.split('-').pop();
 
-  // モーダルを閉じる
-  closeButtonDelete.addEventListener("click", () => {
-    modalDelete.classList.add("hidden");
-  });
+    //indexに対応するモーダルを取得
+    const modalDelete = document.getElementById(`delete-modal-${index}`);
+    const closeButtonDelete = document.getElementById(`modal-cancel-${index}`);
 
-  // モーダルの外側をクリックした場合も閉じる
-  modalDelete.addEventListener("click", (event) => {
-    if (event.target === modalDelete) {
+    // モーダルを開く
+    button.addEventListener("click", () => {
+      modalDelete.classList.remove("hidden");
+    });
+  
+    // モーダルを閉じる
+    closeButtonDelete.addEventListener("click", () => {
       modalDelete.classList.add("hidden");
-    }
+    });
+  
+    // モーダルの外側をクリックした場合も閉じる
+    modalDelete.addEventListener("click", (event) => {
+      if (event.target === modalDelete) {
+        modalDelete.classList.add("hidden");
+      }
+    });
   });
 });
