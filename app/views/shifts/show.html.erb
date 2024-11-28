@@ -51,11 +51,11 @@
                     </div>
                   </div>
                 <% elsif user_signed_in? %>
-                  <button id="ticket-button", class="text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-1 px-3 border border-green-500 hover:border-transparent rounded">
+                  <button id="ticket-button-<%= index %>" class="text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-1 px-3 border border-green-500 hover:border-transparent rounded">
                     参加する
                   </button>
                 <% end %>
-                <div id="ticket-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div id="ticket-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
                   <div class="bg-white rounded-lg shadow-lg w-96 p-6">
                     <div class="flex mb-4 text-gray-700">
                       <h2 class="text-xl font-bold">参加コメント</h2>
@@ -64,14 +64,14 @@
                     <%= form_with model:@shift.tickets.build, url: shift_tickets_path(@shift), local: true do |f| %>
                       <%= f.hidden_field :shortfall_id, value: shortfall.id %>
                       <div class="mb-4">
-                        <%= f.text_area :comment, rows: 4, id: 'comment-field', class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
-                        <div id="comment-error" class="text-red-500 text-sm mt-1 hidden">コメントは50文字以内で入力してください。</div>
+                        <%= f.text_area :comment, rows: 4, id: "comment-field-#{ index }", class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
+                        <div id="comment-error-<%= index %>" class="text-red-500 text-sm mt-1 hidden">コメントは50文字以内で入力してください。</div>
                       </div>
                       <div class="flex justify-end space-x-4">
-                        <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
+                        <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
                           キャンセル
                         </button>
-                        <%= f.submit "送信", id: "submit-button", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
+                        <%= f.submit "送信", id: "submit-button-#{ index }", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
                       </div>
                     <% end %>
                   </div>

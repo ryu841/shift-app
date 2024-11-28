@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const modalCancel = document.getElementById("cancel-modal");
-  const openButtonCancel = document.getElementById("cancel-button");
-  const closeButtonCancel = document.getElementById("modal-cancel");
+  const modalCancel = document.querySelectorAll("#cancel-modal");
+  const openButtonCancel = document.querySelectorAll("#cancel-button");
+  const closeButtonCancel = document.querySelectorAll("#modal-cancel");
 
   // モーダルを開く
   openButtonCancel.addEventListener("click", () => {

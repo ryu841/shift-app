@@ -1,37 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const modalTicket = document.getElementById("ticket-modal");
-  const openButtonTicket = document.getElementById("ticket-button");
-  const closeButtonTicket = document.getElementById("modal-cancel");
-  const errorDiv = document.getElementById("comment-error");
-  const submitButton = document.getElementById("submit-button");
-  const commentField = document.getElementById("comment-field");
+  const openButtonTicket = document.querySelectorAll('[id^="ticket-button-"]');
 
-  // モーダルを開く
-  openButtonTicket.addEventListener("click", () => {
-    modalTicket.classList.remove("hidden");
-  });
+  openButtonTicket.forEach(button => {
+    const index = button.id.split('-').pop();
 
-  // モーダルを閉じる
-  closeButtonTicket.addEventListener("click", () => {
-    modalTicket.classList.add("hidden");
-  });
+    //indexに対応するモーダルを取得
+    const modalTicket = document.getElementById(`ticket-modal-${index}`);
+    const closeButtonTicket = document.getElementById(`modal-cancel-${index}`);
 
-  // モーダルの外側をクリックした場合も閉じる
-  modalTicket.addEventListener("click", (event) => {
-    if (event.target === modalTicket) {
+    // モーダルを開く
+    button.addEventListener("click", () => {
+      modalTicket.classList.remove("hidden");
+    });
+
+    // モーダルを閉じる
+    closeButtonTicket.addEventListener("click", () => {
       modalTicket.classList.add("hidden");
-    }
-  });
+    });
 
-  // 送信ボタンを押したら、コメントが50文字以内かをチェックする
-  submitButton.addEventListener("click", (event) => {
-    const commentLength = commentField.value.length;
+    // モーダルの外側をクリックした場合も閉じる
+    modalTicket.addEventListener("click", (event) => {
+      if (event.target === modalTicket) {
+        modalTicket.classList.add("hidden");
+      }
+    });
 
-    if (commentLength > 50) {
-      event.preventDefault();
-      errorDiv.classList.remove('hidden');
-    } else {
-      errorDiv.classList.add('hidden');
-    }
+    const commentField = document.getElementById(`comment-field-${index}`);
+    //入力中に50文字を超えたらエラーを表示させる
+    commentField.addEventListener("input", () => {
+      const commentLength = commentField.value.length;
+      const errorDiv = document.getElementById(`comment-error-${index}`);
+
+      if (commentLength > 50) {
+        errorDiv.classList.remove('hidden');
+      } else {
+        errorDiv.classList.add('hidden');
+      }
+    });
   });
 });

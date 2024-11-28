@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const modalDelete = document.getElementById("delete-modal");
-  const openButtonDelete = document.getElementById("delete-button");
-  const closeButtonDelete = document.getElementById("modal-cancel");
+  const modalDelete = document.querySelectorAll("#delete-modal");
+  const openButtonDelete = document.querySelectorAll("#delete-button");
+  const closeButtonDelete = document.querySelectorAll("#modal-cancel");
 
   // モーダルを開く
   openButtonDelete.addEventListener("click", () => {
