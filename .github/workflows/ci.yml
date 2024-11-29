@@ -75,6 +75,21 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set up PostgreSQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Set up database connection
+        run: |
+          echo "DATABASE_HOST=$DATABASE_HOST" >> .env
+          echo "DATABASE_USERNAME=$DATABASE_USERNAME" >> .env
+          echo "DATABASE_PASSWORD=$DATABASE_PASSWORD" >> .env
+        env:
+          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+
       - name: Run tests
         env:
           RAILS_ENV: test

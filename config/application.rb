@@ -31,7 +31,7 @@ module ShiftApp
     config.active_record.default_timezone = :local
     # envファイルを読み込む
     Bundler.require(*Rails.groups)
-    Dotenv::Railtie.load
+    Dotenv::Rails.load
 
     config.generators do |g|
       g.assets false # CSS, JavaScriptファイルを自動生成しない
