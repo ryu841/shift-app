@@ -91,9 +91,11 @@ jobs:
           bundler-cache: true
 
       - name: Create database and run migrations
+        env:
+          RAILS_ENV: production
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          bundle exec rails db:create --verbose
+          bundle exec rails db:migrate --verbose
 
       - name: Run tests
         env:
