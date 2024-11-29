@@ -6,7 +6,7 @@ class ShiftsController < ApplicationController
     @allshifts = Shift.all
     @tickets = Ticket.includes(:user)
     @my_tickets = if current_user.present?
-                    Ticket.where(user_id: current_user.id).includes(:shortfall)
+                    Ticket.where(user_id: current_user.id).includes(:shortfall, :shift)
                   else
                     []
                   end

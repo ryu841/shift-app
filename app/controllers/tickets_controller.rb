@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:approve, :reject]
-  before_action :set_shift, only: [:create, :reject, :destroy, :create]
+  before_action :set_shift, only: [:reject, :destroy, :create]
 
   def index
     @shifts = Shift.includes(:tickets).all
@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
     case params[:type]
     when 'cancel'
       flash[:notice] = I18n.t('flash.tickets.cansel.success')
-      redirect_to shift_path(params[:shift_id])
+      redirect_to shifts_path
     when 'delete'
       flash[:notice] = I18n.t('flash.tickets.delete.success')
       redirect_to shifts_path
