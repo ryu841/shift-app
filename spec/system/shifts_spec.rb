@@ -124,6 +124,7 @@ RSpec.describe 'Users', type: :system do
       it '削除ボタンをクリックすると削除できる' do
         expect do
           click_button '削除'
+          find('button', text: '送信', match: :first).click
         end.to change(Shift, :count).by(-1)
 
         expect(current_path).to eq('/shifts')
