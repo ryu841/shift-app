@@ -82,9 +82,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: shift_app_production
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
+# production:
+#   <<: *default
+#   database: shift_app_production
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   host: <%= ENV['DATABASE_HOST'] %>
 
