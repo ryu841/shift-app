@@ -29,6 +29,9 @@ module ShiftApp
     # タイムゾーン設定を変更
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    # envファイルを読み込む
+    Bundler.require(*Rails.groups)
+    Dotenv::Railtie.load
 
     config.generators do |g|
       g.assets false # CSS, JavaScriptファイルを自動生成しない
