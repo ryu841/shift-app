@@ -92,7 +92,7 @@ jobs:
 
       - name: Create database and run migrations
         env:
-          RAILS_ENV: production
+          RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bundle exec rails db:create --verbose
