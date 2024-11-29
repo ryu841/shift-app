@@ -35,18 +35,19 @@
                 <p class="text-gray-700 font-semibold">
                   <%= "#{shortfall.require_count}名" %>
                 </p>
-                <% if @ticket %>
-                  <button id="cancel-button" class="text-sm bg-transparent hover:bg-red-500 text-red-700 hover:text-white py-1 px-3 border border-red-500 hover:border-transparent rounded" >
+                <% current_user_ticket = shortfall.tickets.find_by(user: current_user) %>
+                <% if current_user && current_user_ticket %>
+                  <button id="cancel-button-<%= index %>" class="text-sm bg-transparent hover:bg-red-500 text-red-700 hover:text-white py-1 px-3 border border-red-500 hover:border-transparent rounded" >
                     キャンセルする
                   </button>
-                  <div id="cancel-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                  <div id="cancel-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
                     <div class="bg-white rounded-lg shadow-lg w-96 p-6">
                       <h2 class="text-xl font-bold mb-4 text-gray-700">参加申請をキャンセルしますか？</h2>
                       <div class="flex justify-end space-x-4">
-                        <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
+                        <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
                           キャンセル
                         </button>
-                        <%= button_to "送信", shift_ticket_path(@shift, @ticket, type: "cancel"), method: :delete, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
+                        <%= button_to "送信", shift_ticket_path(@shift, current_user_ticket, type: "cancel"), method: :delete, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
                       </div>
                     </div>
                   </div>
