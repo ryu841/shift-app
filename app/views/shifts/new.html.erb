@@ -1,4 +1,5 @@
 <%= javascript_importmap_tags "shortfall" %>
+<%= javascript_importmap_tags "shift_form" %>
 
 <%= form_with model: @shift, class: "w-3/4 max-w-xl" do |f| %>
   <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
@@ -59,7 +60,8 @@
       <label class="text-gray-700 text-lg">コメント</label>
       <p class="text-gray-700 text-sm items-center flex">（100文字以内）</p>
     </div>
-    <%= f.text_area :comment, rows: "5", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+    <%= f.text_area :comment, rows: "5", id: "shift-comment-field" ,class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md" %>
+    <div id="shift-comment-error" class="text-red-500 text-sm mt-1 hidden">コメントは100文字以内で入力してください。</div>
   </div>
   <div class="px-4 py-3 text-right sm:px-6">
     <%= f.submit "作成", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
