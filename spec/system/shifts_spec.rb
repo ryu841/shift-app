@@ -22,7 +22,7 @@ RSpec.describe 'Users', type: :system do
       fill_in 'shift_shortfalls_attributes_0_start_time', with: start_time
       fill_in 'shift_shortfalls_attributes_0_end_time', with: end_time
       fill_in 'shift_shortfalls_attributes_0_require_count', with: require_count
-      fill_in 'shift_comment', with: comment
+      fill_in 'shift-comment-field', with: comment
       click_button '作成'
     end
 
@@ -63,7 +63,7 @@ RSpec.describe 'Users', type: :system do
 
         it '入力していた内容は維持される' do
           subject
-          expect(page).to have_field('shift_comment', with: comment)
+          expect(page).to have_field('shift-comment-field', with: comment)
         end
       end
 
