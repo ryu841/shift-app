@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const commentField = document.getElementById("shift-comment-field");
-
   //入力中に100文字を超えたらエラーを表示させる
+  const commentField = document.getElementById("shift-comment-field");
   commentField.addEventListener("input", () => {
     const commentLength = commentField.value.length;
     const errorDiv = document.getElementById("shift-comment-error");

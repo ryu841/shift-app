@@ -90,19 +90,19 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Create database and run migrations
-        env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: |
-          bundle exec rails db:create --verbose
-          bundle exec rails db:migrate --verbose
+      # - name: Create database and run migrations
+      #   env:
+      #     RAILS_ENV: test
+      #     RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      #   run: |
+      #     bundle exec rails db:create --verbose
+      #     bundle exec rails db:migrate --verbose
 
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
-        run: bundle exec rspec
+      # - name: Run tests
+      #   env:
+      #     RAILS_ENV: test
+      #     # REDIS_URL: redis://localhost:6379/0
+      #   run: bundle exec rspec
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

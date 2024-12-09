@@ -8,8 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // IDが同じにならないようにするための初期インデックス
   let shortfallIndex = 1 ;
 
-   // 「募集時間を追加」を押すと、1行追加される
+  // 「募集時間を追加」を押すと、1行追加される
   addButton.addEventListener('click', function () {
+    // 現在のshortfall数を取得
+    const shortfallsContainer = document.getElementById('shortfalls');
+    const currentShortfalls = shortfallsContainer.querySelectorAll('#shortfalltemplate');
+    const errorDiv = document.getElementById("shortfalltemplate-error");
+    
+    // 4つ以上ならエラー表示して追加させない
+    if (currentShortfalls.length >= 5) {
+      errorDiv.classList.remove('hidden');
+      return;
+    }
+
     // 新しいフォームを追加
     const newShortfall = document.createElement('div');
     newShortfall.innerHTML = shortfallTemplate;
