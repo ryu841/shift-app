@@ -117,6 +117,9 @@ ja:
         success: "参加申請を却下しました。"
         failure: "参加申請の却下に失敗しました。"
       unknown_action: "不明なアクションです。"
+    sessions:
+      guest_user_sign_in: "ゲストユーザーとしてログインしました。"
+      guest_admin_sign_in: "管理者ゲストユーザーとしてログインしました。"
 
   devise:
     failure:
