@@ -8,6 +8,12 @@ class Admin < ApplicationRecord
   # 管理者は1人だけ作成できるように制限
   validate :only_one_admin, on: :create
 
+  def self.guest
+    find_or_create_by!(email: 'admin_guest@example.com') do |admin|
+      admin.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   private
 
   def only_one_admin

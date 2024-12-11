@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   }
   devise_for :users
 
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/sessions#guest_sign_in'
+  end
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   root "home#top"
 
   resources :shifts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
