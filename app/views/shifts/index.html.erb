@@ -1,6 +1,6 @@
 <%= javascript_importmap_tags "cancel_modal" %>
 
-<div class="lg:grid lg:grid-cols-7 gap-6 lg:gap-6 lg:grid-reverse">
+<div class="lg:grid lg:grid-cols-7 gap-6 lg:gap-6 lg:grid-reverse px-5">
   <% if admin_signed_in? %>
     <div class="col-span-3 lg:order-2">
       <label class="block text-xl font-bold text-gray-700">
@@ -12,7 +12,7 @@
             <% @allshifts.each do |shift| %>
               <% shift.shortfalls.each do |shortfall| %>
                 <% if ticket.shortfall_id == shortfall.id %>
-                  <div class="flex justify-around border-b border-gray-200 pb-4 pt-4">
+                  <div class="flex justify-around border-b border-gray-200 pb-4 pt-4 items-center">
                     <li>
                       <strong><%= ticket.user.firstname + " " + ticket.user.lastname %></strong>
                     </li>

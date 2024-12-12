@@ -20,7 +20,7 @@
   <body class="h-screen bg-blue-50">
     <%= render 'shared/flash' %>
     <%= render 'shared/navbar' %>
-    <main class="container mx-auto mt-10 lg:mt-20 px-5 flex items-center justify-center">
+    <main class="container mx-auto mt-10 lg:mt-20 flex items-center justify-center">
       <%= yield %>
     </main>
     <% if controller_name == "shifts" && action_name == "index" %>
