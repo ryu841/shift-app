@@ -23,7 +23,7 @@
                     </button>
                   <% end %>
                   <div id="delete-modal" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                    <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+                    <div class="bg-white rounded-lg shadow-lg w-80 sm:w-96 p-6">
                       <h2 class="text-xl font-bold mb-4 text-gray-700">募集シフトを削除しますか？</h2>
                       <div class="flex justify-end space-x-4">
                         <button type="button" id="modal-cancel" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
@@ -55,7 +55,7 @@
                     キャンセルする
                   </button>
                   <div id="cancel-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                    <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+                    <div class="bg-white rounded-lg shadow-lg w-80 sm:w-96 p-6">
                       <h2 class="text-xl font-bold mb-4 text-gray-700">参加申請をキャンセルしますか？</h2>
                       <div class="flex justify-end space-x-4">
                         <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
@@ -71,7 +71,7 @@
                   </button>
                 <% end %>
                 <div id="ticket-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                  <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+                  <div class="bg-white rounded-lg shadow-lg w-80 sm:w-96 p-6">
                     <div class="flex mb-4 text-gray-700">
                       <h2 class="text-xl font-bold">参加コメント</h2>
                       <p class="text-sm items-center flex">（50文字以内）</p>
