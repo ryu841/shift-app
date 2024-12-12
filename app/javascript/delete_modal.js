@@ -6,17 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButtonDelete = document.getElementById("modal-cancel");
 
   // モーダルを開く
-  openButtonDelete.addEventListener("click", () => {
+  openButtonDelete.addEventListener("pointerdown", () => {
     modalDelete.classList.remove("hidden");
   });
 
   // モーダルを閉じる
-  closeButtonDelete.addEventListener("click", () => {
+  closeButtonDelete.addEventListener("pointerdown", () => {
     modalDelete.classList.add("hidden");
   });
 
   // モーダルの外側をクリックした場合も閉じる
-  modalDelete.addEventListener("click", (event) => {
+  modalDelete.addEventListener("pointerdown", (event) => {
     if (event.target === modalDelete) {
       modalDelete.classList.add("hidden");
     }

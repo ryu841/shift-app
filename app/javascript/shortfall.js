@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let shortfallIndex = 1 ;
 
   // 「募集時間を追加」を押すと、1行追加される
-  addButton.addEventListener('click', function () {
+  addButton.addEventListener('pointerdown', function () {
     // 現在のshortfall数を取得
     const shortfallsContainer = document.getElementById('shortfalls');
     const currentShortfalls = shortfallsContainer.querySelectorAll('#shortfalltemplate');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // 「募集時間を削除」を押すと、1行削除される
   const removeButton = document.getElementById('remove-menu-button');
 
-  removeButton.addEventListener('click', function () {
+  removeButton.addEventListener('pointerdown', function () {
     if(shortfallsContainer.children.length > 1) {
       shortfallsContainer.removeChild(shortfallsContainer.lastElementChild);
     } else {
