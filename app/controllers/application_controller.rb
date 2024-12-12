@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  allow_browser versions: :modern
+  # allow_browser versions: :modern
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # ログイン後のリダイレクト先を指定
