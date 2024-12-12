@@ -5,7 +5,7 @@
 <div class="space-y-6 w-[512px] max-w-lg">
   <label class="block text-xl font-bold text-gray-700">シフト詳細</label>
     <div class="items-center">
-        <div tabindex="0" class="focus:outline-none mb-7 bg-white p-6 shadow rounded">
+        <div tabindex="0" class="focus:outline-none mb-7 bg-white px-6 pt-6 pb-2 shadow rounded">
           <div class="flex border-b border-gray-200 pb-6">
             <div class="flex items-start justify-between w-full">
               <div class="pl-3">
@@ -40,7 +40,7 @@
           <% @shortfalls.each_with_index do |shortfall, index| %>
             <% if shortfall.start_time.present? %>
               <div class="py-3 px-3 border border-gray-300 rounded-md shadow-sm bg-gray-50 mt-2 sm:flex justify-between items-center">
-                <div class="flex justify-around sm:w-3/4">
+                <div class="flex justify-around w-full">
                   <p class="text-gray-700 font-semibold">
                     <%= "不足時間 #{index + 1} : " %>
                   </p>
@@ -51,9 +51,9 @@
                     <%= "#{shortfall.require_count}名" %>
                   </p>
                 </div>
-                <div class="sm:w-1/4 text-center max-sm:mt-2">
-                  <% current_user_ticket = shortfall.tickets.find_by(user: current_user) %>
-                  <% if current_user && current_user_ticket %>
+                <% current_user_ticket = shortfall.tickets.find_by(user: current_user) %>
+                <% if current_user && current_user_ticket %>
+                  <div class="sm:w-2/5 text-center max-sm:mt-2">
                     <button id="cancel-button-<%= index %>" class="text-sm bg-transparent hover:bg-red-500 text-red-700 hover:text-white py-2 sm:py-1 px-8 sm:px-3 border border-red-500 hover:border-transparent rounded" >
                       キャンセルする
                     </button>
@@ -68,33 +68,35 @@
                         </div>
                       </div>
                     </div>
+                  </div>
                   <% elsif user_signed_in? %>
+                  <div class="sm:w-2/5 text-center max-sm:mt-2">
                     <button id="ticket-button-<%= index %>" class="text-sm bg-transparent hover:bg-green-500 text-green-700 hover:text-white py-2 sm:py-1 px-11 sm:px-3 border border-green-500 hover:border-transparent rounded">
                       参加する
                     </button>
-                  <% end %>
-                </div>
-                <div id="ticket-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                  <div class="bg-white rounded-lg shadow-lg w-80 sm:w-96 p-6">
-                    <div class="flex mb-4 text-gray-700">
-                      <h2 class="text-xl font-bold">参加コメント</h2>
-                      <p class="text-sm items-center flex">（50文字以内）</p>
-                    </div>
-                    <%= form_with model:@shift.tickets.build, url: shift_tickets_path(@shift), local: true do |f| %>
-                      <%= f.hidden_field :shortfall_id, value: shortfall.id %>
-                      <div class="mb-4">
-                        <%= f.text_area :comment, rows: 4, id: "comment-field-#{ index }", class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
-                        <div id="comment-error-<%= index %>" class="text-red-500 text-sm mt-1 hidden">コメントは50文字以内で入力してください。</div>
-                      </div>
-                      <div class="flex justify-end space-x-4">
-                        <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
-                          キャンセル
-                        </button>
-                        <%= f.submit "送信", id: "submit-button-#{ index }", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
-                      </div>
-                    <% end %>
                   </div>
-                </div>
+                  <% end %>
+                  <div id="ticket-modal-<%= index %>" class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg w-80 sm:w-96 p-6">
+                      <div class="flex mb-4 text-gray-700">
+                        <h2 class="text-xl font-bold">参加コメント</h2>
+                        <p class="text-sm items-center flex">（50文字以内）</p>
+                      </div>
+                      <%= form_with model:@shift.tickets.build, url: shift_tickets_path(@shift), local: true do |f| %>
+                        <%= f.hidden_field :shortfall_id, value: shortfall.id %>
+                        <div class="mb-4">
+                          <%= f.text_area :comment, rows: 4, id: "comment-field-#{ index }", class: "w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-300", placeholder: "コメントを入力してください" %>
+                          <div id="comment-error-<%= index %>" class="text-red-500 text-sm mt-1 hidden">コメントは50文字以内で入力してください。</div>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                          <button type="button" id="modal-cancel-<%= index %>" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700" >
+                            キャンセル
+                          </button>
+                          <%= f.submit "送信", id: "submit-button-#{ index }", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
               </div>
             <% end %>
           <% end %>
