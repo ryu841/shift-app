@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("max-sm:hidden");
   });
-  menuToggle.addEventListener("touchstart", () => {
+  menuToggle.addEventListener("touchstart", function(event) {
+    event.preventDefault();
     menu.classList.toggle("max-sm:hidden");
   });
 });
