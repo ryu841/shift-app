@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // 「募集時間を追加」を押すと、1行追加される
   addButton.addEventListener('click', function () {
     // 現在のshortfall数を取得
-    const shortfallsContainer = document.getElementById('shortfalls');
     const currentShortfalls = shortfallsContainer.querySelectorAll('#shortfalltemplate');
     const errorDiv = document.getElementById("shortfalltemplate-error");
     

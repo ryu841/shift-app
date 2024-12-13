@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <script type="module" src="<%= asset_path 'navbar_toggle.js' %>"></script>
+  <script type="module" src="<%= asset_path 'cancel_modal.js' %>"></script>
+<% end %>
+
 <div class="lg:grid lg:grid-cols-7 gap-6 lg:gap-6 lg:grid-reverse px-5">
   <% if admin_signed_in? %>
     <div class="col-span-3 lg:order-2">

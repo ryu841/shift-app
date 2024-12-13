@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <script type="module" src="<%= asset_path 'navbar_toggle.js' %>"></script>
+  <script type="module" src="<%= asset_path 'shortfall.js' %>"></script>
+  <script type="module" src="<%= asset_path 'shift_form.js' %>"></script>
+<% end %>
+
 <%= form_with model: @shift, class: "w-3/4 max-w-xl" do |f| %>
   <label class="block text-xl font-bold text-gray-700">募集シフト作成</label>
   <% if @shift.errors.any? %>
