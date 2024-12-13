@@ -5,7 +5,7 @@
     <div class="max-sm:container max-sm:flex max-sm:flex-wrap max-sm:justify-between max-sm:items-center max-sm:mx-auto max-sm:py-2.5">
       <%= link_to "S-Connect", (user_signed_in? || admin_signed_in?) ? shifts_path : root_path, class: "self-center text-white text-2xl font-semibold whitespace-nowrap pl-4" %>
 
-      <button id="menu-toggle" class="sm:hidden text-white pr-4">
+      <button id="menu-toggle" class="sm:hidden text-white mr-4 cursor-pointer">
         <i class="fa-solid fa-bars fa-2x"></i>
         <i class="fa-solid fa-xmark fa-2x hidden"></i>
       </button>
