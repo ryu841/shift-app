@@ -9,17 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeButtonTicket = document.getElementById(`modal-cancel-${index}`);
 
     // モーダルを開く
-    button.addEventListener("pointerdown", () => {
+    button.addEventListener("click", () => {
+      modalTicket.classList.remove("hidden");
+    });
+    button.addEventListener("touchstart", () => {
       modalTicket.classList.remove("hidden");
     });
 
     // モーダルを閉じる
-    closeButtonTicket.addEventListener("pointerdown", () => {
+    closeButtonTicket.addEventListener("click", () => {
+      modalTicket.classList.add("hidden");
+    });
+    closeButtonTicket.addEventListener("touchstart", () => {
       modalTicket.classList.add("hidden");
     });
 
     // モーダルの外側をクリックした場合も閉じる
-    modalTicket.addEventListener("pointerdown", (event) => {
+    modalTicket.addEventListener("click", (event) => {
+      if (event.target === modalTicket) {
+        modalTicket.classList.add("hidden");
+      }
+    });
+    modalTicket.addEventListener("touchstart", (event) => {
       if (event.target === modalTicket) {
         modalTicket.classList.add("hidden");
       }

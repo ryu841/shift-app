@@ -6,17 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButtonDelete = document.getElementById("modal-cancel");
 
   // モーダルを開く
-  openButtonDelete.addEventListener("pointerdown", () => {
+  openButtonDelete.addEventListener("click", () => {
+    modalDelete.classList.remove("hidden");
+  });
+  openButtonDelete.addEventListener("touchstart", () => {
     modalDelete.classList.remove("hidden");
   });
 
   // モーダルを閉じる
-  closeButtonDelete.addEventListener("pointerdown", () => {
+  closeButtonDelete.addEventListener("click", () => {
+    modalDelete.classList.add("hidden");
+  });
+  closeButtonDelete.addEventListener("touchstart", () => {
     modalDelete.classList.add("hidden");
   });
 
   // モーダルの外側をクリックした場合も閉じる
-  modalDelete.addEventListener("pointerdown", (event) => {
+  modalDelete.addEventListener("click", (event) => {
+    if (event.target === modalDelete) {
+      modalDelete.classList.add("hidden");
+    }
+  });
+  modalDelete.addEventListener("touchstart", (event) => {
     if (event.target === modalDelete) {
       modalDelete.classList.add("hidden");
     }
