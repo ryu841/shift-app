@@ -1,6 +1,7 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "application", preload: true
+pin "tailwind", to: "tailwind.css"
+pin "application", to: "application.js", preload: true
 pin_all_from "app/javascript/components", under: "components"
 pin "shortfall", to: "shortfall.js"
 pin "ticket_modal", to: "ticket_modal.js"
