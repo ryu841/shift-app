@@ -4,5 +4,4 @@ import "./delete_modal";
 import "./cancel_modal";
 import "./navbar_toggle";
 import "./shift_form";
-import { UJS } from "@rails/ujs"
-UJS.start()
+import "@rails/ujs";
