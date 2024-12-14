@@ -110,12 +110,12 @@
     <label class="block text-xl font-bold text-gray-700 mt-10 lg:mt-0">募集シフト一覧</label>
     <% if @shifts.present? %>
       <% @shifts.each do |shift| %>
-        <div class="md:min-w-[427px]">
+        <%= link_to shift_path(shift), class: "md:min-w-[427px] block" do %>
           <div tabindex="0" class="focus:outline-none mb-7 bg-white p-6 shadow rounded">
             <div class="border-b border-gray-200 pb-3" >
               <div>
                 <div class="pl-3">
-                  <p class="focus:outline-none text-lg font-medium leading-5 text-gray-800"><%= link_to shift.title_date, shift_path(shift) %></p>
+                  <p class="focus:outline-none text-lg font-medium leading-5 text-gray-800"><%= shift.title_date %></p>
                   <p class="focus:outline-none text-sm leading-normal pt-2 text-gray-500">by 店長
               </div>
               </div>
@@ -141,7 +141,7 @@
               </div>
             <% end %>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% else %>
       <div class="flex justify-center focus:outline-none mb-7 bg-white shadow rounded">
