@@ -9,25 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
   openButtonDelete.addEventListener("click", () => {
     modalDelete.classList.remove("hidden");
   });
-  openButtonDelete.addEventListener("touchstart", () => {
-    modalDelete.classList.remove("hidden");
-  });
 
   // モーダルを閉じる
   closeButtonDelete.addEventListener("click", () => {
     modalDelete.classList.add("hidden");
   });
-  closeButtonDelete.addEventListener("touchstart", () => {
-    modalDelete.classList.add("hidden");
-  });
 
   // モーダルの外側をクリックした場合も閉じる
   modalDelete.addEventListener("click", (event) => {
-    if (event.target === modalDelete) {
-      modalDelete.classList.add("hidden");
-    }
-  });
-  modalDelete.addEventListener("touchstart", (event) => {
     if (event.target === modalDelete) {
       modalDelete.classList.add("hidden");
     }

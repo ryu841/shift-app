@@ -38,48 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
     shortfallsContainer.appendChild(newShortfall);
     shortfallIndex++;
   });
-  addButton.addEventListener('touchstart', function () {
-    // 現在のshortfall数を取得
-    const shortfallsContainer = document.getElementById('shortfalls');
-    const currentShortfalls = shortfallsContainer.querySelectorAll('#shortfalltemplate');
-    const errorDiv = document.getElementById("shortfalltemplate-error");
-    
-    // 4つ以上ならエラー表示して追加させない
-    if (currentShortfalls.length >= 5) {
-      errorDiv.classList.remove('hidden');
-      return;
-    }
-
-    // 新しいフォームを追加
-    const newShortfall = document.createElement('div');
-    newShortfall.innerHTML = shortfallTemplate;
-
-    // インデックス番号を追加してname属性をユニークにする
-    // name="shift[shortfalls_attributes][0][start_time]"の[0]を取り出し、[1]に書き換える
-    Array.from(newShortfall.querySelectorAll('input, select')).forEach((input) => {
-      input.name = input.name.replace(/\[\d+\]/, `[${shortfallIndex}]`);
-      input.id = input.id.replace(/\_\d+\_/, `_${shortfallIndex}_`);
-      // hiddenフィールドのvalueを動的に変更
-      if (input.type === 'hidden') {
-      input.value = '';  // 新規追加なので、IDを空にして新しい値を設定
-       }
-    });
-  
-    shortfallsContainer.appendChild(newShortfall);
-    shortfallIndex++;
-  });
 
   // 「募集時間を削除」を押すと、1行削除される
   const removeButton = document.getElementById('remove-menu-button');
 
   removeButton.addEventListener('click', function () {
-    if(shortfallsContainer.children.length > 1) {
-      shortfallsContainer.removeChild(shortfallsContainer.lastElementChild);
-    } else {
-      alert('削除できる募集時間がありません。')
-    }
-  });
-  removeButton.addEventListener('touchstart', function () {
     if(shortfallsContainer.children.length > 1) {
       shortfallsContainer.removeChild(shortfallsContainer.lastElementChild);
     } else {
