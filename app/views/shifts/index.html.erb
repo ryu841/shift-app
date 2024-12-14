@@ -20,7 +20,7 @@
                       <strong><%= ticket.user.firstname + " " + ticket.user.lastname %></strong>
                     </li>
                     <li>
-                      <button class="text-sm bg-transparent text-green-700 py-1 px-3 border border-green-500 rounded">
+                      <button class="text-sm bg-green-500 text-white py-1 px-3 border border-green-500 rounded">
                       承認待ち
                       </button>
                     </li>
@@ -64,15 +64,15 @@
                 <li>
                   <% case ticket.status %>
                   <% when 'pending' %>
-                    <p class="ml-2 text-sm bg-transparent text-blue-700 py-1 px-2 border border-blue-500 rounded">
+                    <p class="ml-2 text-sm bg-blue-500 text-white py-1 px-2 border border-blue-500 rounded">
                     承認待ち
                     </p>
                   <% when 'approved' %>
-                    <p class="ml-2 text-sm bg-transparent text-green-700 py-1 px-2 border border-green-500 rounded">
+                    <p class="ml-2 text-sm bg-green-500 text-white py-1 px-2 border border-green-500 rounded">
                     承認済み
                     </p>
                   <% when 'rejected' %>
-                    <p class="ml-2 text-sm bg-transparent text-red-700 py-1 px-2 border border-red-500 rounded">
+                    <p class="ml-2 text-sm bg-red-500 text-white py-1 px-2 border border-red-500 rounded">
                     承認却下
                     </p>
                   <% end %>
