@@ -8,8 +8,8 @@
 <div class="space-y-6 w-[512px] max-w-lg px-5">
   <label class="block text-xl font-bold text-gray-700">シフト詳細</label>
     <div class="items-center">
-        <div tabindex="0" class="focus:outline-none mb-7 bg-white px-6 pt-6 pb-2 shadow rounded">
-          <div class="flex border-b border-gray-200 pb-6">
+        <div tabindex="0" class="focus:outline-none mb-7 bg-white p-6 shadow rounded">
+          <div class="flex border-b border-gray-200 pb-2">
             <div class="flex items-start justify-between w-full">
               <div class="pl-3">
                 <p class="focus:outline-none text-lg font-medium leading-5 text-gray-800"><%= link_to @shift.title_date, shift_path(@shift) %></p>
@@ -42,7 +42,7 @@
           </div>
           <% @shortfalls.each_with_index do |shortfall, index| %>
             <% if shortfall.start_time.present? %>
-              <div class="py-3 px-3 border border-gray-300 rounded-md shadow-sm bg-gray-50 mt-2 sm:flex justify-between items-center">
+              <div class="py-3 px-3 border border-gray-300 rounded-md shadow-sm bg-gray-50 my-2 sm:flex justify-between items-center">
                 <div class="flex justify-around w-full">
                   <p class="text-gray-700 font-semibold">
                     <%= "不足時間 #{index + 1} : " %>
@@ -103,8 +103,8 @@
               </div>
             <% end %>
           <% end %>
-          <div class="px-2">
-            <p class="focus:outline-none text-sm leading-5 py-4 text-gray-600"><%= @shift.comment %></p>
+          <div class="px-2 border-t border-gray-200">
+            <p class="focus:outline-none text-sm leading-5 pt-2 text-gray-600"><%= @shift.comment %></p>
           </div>
         </div>
     </div>

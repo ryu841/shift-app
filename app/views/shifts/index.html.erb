@@ -122,7 +122,7 @@
       <% @shifts.each do |shift| %>
         <%= link_to shift_path(shift), class: "md:min-w-[427px] block" do %>
           <div tabindex="0" class="focus:outline-none mb-7 bg-white p-6 shadow rounded">
-            <div class="border-b border-gray-200 pb-3" >
+            <div class="border-b border-gray-200 pb-2" >
               <div>
                 <div class="pl-3">
                   <p class="focus:outline-none text-lg font-medium leading-5 text-gray-800"><%= shift.title_date %></p>
@@ -147,7 +147,7 @@
             <% end %>
             <% if shift.comment.present? %>
               <div class="px-2 border-t border-gray-200">
-                <p class="focus:outline-none text-sm leading-5 text-gray-600 pt-3"><%= shift.comment %></p>
+                <p class="focus:outline-none text-sm leading-5 text-gray-600 pt-2"><%= shift.comment %></p>
               </div>
             <% end %>
           </div>
