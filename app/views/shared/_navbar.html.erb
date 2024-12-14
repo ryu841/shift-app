@@ -19,6 +19,9 @@
             <%= link_to "募集シフト一覧", shifts_path, class: "block py-2 text-gray-400 max-sm:border-b border-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-white md:p-0" %>
           </li>
           <li>
+            <%= link_to "参加申請一覧", tickets_path, class: "block py-2 text-gray-400 max-sm:border-b border-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-white md:p-0" %>
+          </li>
+          <li>
             <%= button_to 'ログアウト', destroy_admin_session_path, class: "inline-block py-2 text-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-white md:p-0", method: :delete %>
           </li>
         <% elsif user_signed_in? %>
