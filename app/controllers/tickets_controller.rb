@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
 
   def index
     @shifts = Shift.includes(:tickets).all
-    @tickets = @shifts.flat_map(&:tickets)
+    @tickets = @shifts.flat_map(&:tickets).sort_by(&:created_at)
   end
 
   def new
