@@ -24,7 +24,7 @@
     <label class="text-gray-700 text-lg">
       募集時間・人数
     </label>
-    <div id="shortfalls" class="space-y-4" >
+    <div id="shortfalls" class="space-y-2" >
       <%= f.fields_for :shortfalls do |shortfall_fields| %>
         <div id="shortfalltemplate" class="mt-1 py-4 px-4 max-md:px-2 max-sm:px-4 border border-gray-300 rounded-md shadow-sm bg-gray-50" >
           <%= shortfall_fields.hidden_field :id %> 

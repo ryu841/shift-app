@@ -46,7 +46,7 @@ class ShiftsController < ApplicationController
     @shift = Shift.find_by(id: params[:id])
     if @shift.update(shift_params)
       @shift.reload
-      redirect_to shifts_path
+      redirect_to shift_path(@shift)
       flash[:notice] = I18n.t('flash.shifts.update.success')
     else
       flash[:alert] = I18n.t('flash.shifts.update.failure')
