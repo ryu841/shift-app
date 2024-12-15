@@ -29,6 +29,7 @@
       <%= f.fields_for :shortfalls do |shortfall_fields| %>
         <div id="shortfalltemplate" class="mt-1 py-4 px-4 max-md:px-2 max-sm:px-4 border border-gray-300 rounded-md shadow-sm bg-gray-50" >
           <%= shortfall_fields.hidden_field :id %> 
+          <%= shortfall_fields.hidden_field :_destroy, value: false %>
           <div class="text-center grid grid-cols-2 sm:flex md:space-x-4">
             <div class="sm:w-1/3">
               <%= shortfall_fields.label :start_time, "開始時間" %>

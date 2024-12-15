@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
       input.id = input.id.replace(/\_\d+\_/, `_${shortfallIndex}_`);
       // hiddenフィールドのvalueを動的に変更
       if (input.type === 'hidden') {
-      input.value = '';  // 新規追加なので、IDを空にして新しい値を設定
-       }
+        input.value = ''; // 新規追加なので、IDを空にして新しい値を設定
+       } else {
+        input.value = ''; // テキストや数値フィールドも空にする
+      }
     });
   
     shortfallsContainer.appendChild(newShortfall);
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const destroyField = lastShortfall.querySelector('input[name*="[_destroy]"]');
       if (destroyField) {
         destroyField.value = '1';
-        lastShortfall.style.display = 'none';
+        shortfallsContainer.removeChild(lastShortfall);
       }
     } else {
       alert('削除できる募集時間がありません。')
