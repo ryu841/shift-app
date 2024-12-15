@@ -15,7 +15,15 @@
             <% @allshifts.each do |shift| %>
               <% shift.shortfalls.each do |shortfall| %>
                 <% if ticket.shortfall_id == shortfall.id %>
-                  <div class="flex justify-around border-b border-gray-200 pb-4 pt-4 items-center">
+                  <div class="flex justify-center gap-2 border-b border-gray-200 pb-4 pt-4 items-center">
+                    <div class="md:flex">
+                      <li>
+                        <strong><%= ticket.shift.title_date %></strong>
+                      </li>
+                      <li class="md:ml-2">
+                        <%= "(#{ticket.shortfall.start_time&.strftime("%H:%M")} ~ #{ticket.shortfall.end_time&.strftime("%H:%M")})" %>
+                      </li>
+                    </div>
                     <li>
                       <strong><%= ticket.user.firstname + " " + ticket.user.lastname %></strong>
                     </li>
