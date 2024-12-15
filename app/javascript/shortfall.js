@@ -44,7 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   removeButton.addEventListener('click', function () {
     if(shortfallsContainer.children.length > 1) {
-      shortfallsContainer.removeChild(shortfallsContainer.lastElementChild);
+      const lastShortfall = shortfallsContainer.lastElementChild;
+      const destroyField = lastShortfall.querySelector('input[name*="[_destroy]"]');
+      if (destroyField) {
+        destroyField.value = '1';
+        lastShortfall.style.display = 'none';
+      }
     } else {
       alert('削除できる募集時間がありません。')
     }
