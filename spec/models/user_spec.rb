@@ -19,25 +19,25 @@ RSpec.describe User, type: :model do
   describe 'validation' do
     describe 'firstname,lastname属性' do
       describe '文字数制限の検証' do
-        context '文字数が10文字以下の場合' do
-          let(:firstname) { 'あいうえおかきくけこ' } # 10文字
-          let(:lastname) { 'あいうえおかきくけこ' } # 10文字
+        context '文字数が5文字以下の場合' do
+          let(:firstname) { 'あいうえお' } # 5文字
+          let(:lastname) { 'あいうえお' } # 5文字
 
           it 'Userオブジェクトは有効である' do
             expect(user.valid?).to be(true)
           end
         end
 
-        context '文字数が10文字を超える場合' do
-          let(:firstname) { 'あいうえおかきくけこさ' } # 11文字
-          let(:lastname) { 'あいうえおかきくけこさ' } # 11文字
+        context '文字数が5文字を超える場合' do
+          let(:firstname) { 'あいうえおか' } # 6文字
+          let(:lastname) { 'あいうえおか' } # 6文字
 
           it 'Userオブジェクトは無効である' do
             user.valid?
 
             expect(user.valid?).to be(false)
-            expect(user.errors[:firstname]).to include('は10文字以下に設定して下さい。')
-            expect(user.errors[:lastname]).to include('は10文字以下に設定して下さい。')
+            expect(user.errors[:firstname]).to include('は5文字以下に設定して下さい。')
+            expect(user.errors[:lastname]).to include('は5文字以下に設定して下さい。')
           end
         end
       end

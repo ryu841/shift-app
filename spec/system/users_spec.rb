@@ -41,11 +41,11 @@ RSpec.describe 'Users', type: :system do
         end
       end
 
-      context 'firstnameが10文字を超える場合' do
+      context 'firstnameが5文字を超える場合' do
         let(:firstname) { 'あ' * 11 }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content('姓 は10文字以下に設定して下さい。')
+          expect(page).to have_content('姓 は5文字以下に設定して下さい。')
         end
       end
 
@@ -57,11 +57,11 @@ RSpec.describe 'Users', type: :system do
         end
       end
 
-      context 'lastnameが10文字を超える場合' do
+      context 'lastnameが5文字を超える場合' do
         let(:lastname) { 'あ' * 11 }
         it 'ユーザーを作成せず、エラーメッセージを表示する' do
           expect { subject }.not_to change(User, :count)
-          expect(page).to have_content('名 は10文字以下に設定して下さい。')
+          expect(page).to have_content('名 は5文字以下に設定して下さい。')
         end
       end
 
