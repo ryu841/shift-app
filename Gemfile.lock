@@ -103,7 +103,7 @@ GEM
     capistrano-rbenv-vars (0.1.0)
       capistrano (>= 3.0)
       capistrano-rbenv (>= 2.0)
-    capistrano3-puma (6.0.0.beta.1)
+    capistrano3-puma (6.0.0)
       capistrano (~> 3.7)
       capistrano-bundler
       puma (>= 5.1, < 7.0)
@@ -402,7 +402,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.6)
   capistrano-rbenv (~> 2.2)
   capistrano-rbenv-vars (~> 0.1)
-  capistrano3-puma (= 6.0.0.beta.1)
+  capistrano3-puma (= 6.0.0)
   capybara
   debug
   devise
